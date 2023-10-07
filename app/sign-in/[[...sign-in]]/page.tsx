@@ -12,7 +12,7 @@ export default function SignInPage() {
       <div className="text-xl font-semibold sm:text-2xl">
         Login to your fudwud account
       </div>
-      <SignIn />
+      <SignIn afterSignInUrl={"/profile"} afterSignUpUrl={"/profile"} />
     </section>
   );
 }

@@ -1,5 +1,17 @@
 import OnboardingPage from "./onboadring";
 
-export default function Home() {
-  return <OnboardingPage />;
+export default async function Home() {
+  return (
+    <>
+      <OnboardingPage />;
+    </>
+  );
+}
+
+function ProfilePage() {
+  return (
+    <div>
+      <>content</>
+    </div>
+  );
 }

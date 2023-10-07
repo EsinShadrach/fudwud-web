@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cl-internal-b3fm6y {
+  @apply hidden;
+}
+
+.cl-userButtonPopoverFooter {
+  @apply hidden;
+}
+
+.cl-formButtonPrimary {
+  @apply bg-[#fe724c];
+}
+
+.cl-formButtonReset,
+.cl-profileSectionPrimaryButton,
+.cl-badge {
+  @apply hover:bg-[#fe724c]/20 text-[#fe724c];
+}
+
+.cl-avatarImageActionsUpload {
+  @apply text-[#fe724c];
+}
+
+.cl-badge {
+  @apply bg-[#fe724c]/20;
+}

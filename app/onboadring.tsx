@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import onboardingImage from "~/public/onboarding-img.jpeg";
@@ -16,6 +17,7 @@ export default function OnboardingPage() {
       <div className="relative min-h-screen bg-gradient-to-b from-[#494D6300] to-[#191B2F] flex flex-col">
         <section className="container p-2 py-6 mx-auto">
           <div className="flex justify-end">
+            <UserButton afterSignOutUrl="/" />
             {/* <button className="ml-auto bg-white px-6 py-1.5 rounded-full shadow-xl hover:bg-opacity-10 transition-all duration-300">
                  Skip
                </button>
@@ -38,7 +40,7 @@ export default function OnboardingPage() {
           </div>
           <OAuthRow />
           <div className="max-w-md mx-auto">
-            <Link href={"/login"}>
+            <Link href={"/sign-in"}>
               <div className="w-full max-w-md py-3 mx-auto font-semibold text-center text-white border border-white rounded-full bg-white/20 backdrop-blur-sm">
                 Start with email
               </div>

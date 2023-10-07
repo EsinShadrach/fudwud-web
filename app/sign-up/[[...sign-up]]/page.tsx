@@ -8,7 +8,7 @@ export default function SignUpPage() {
       className={`min-h-screen flex justify-center items-center p-3 flex-col gap-3`}
     >
       <SignUpTitle />
-      <SignUp />
+      <SignUp afterSignInUrl={"/profile"} afterSignUpUrl={"/profile"} />
     </section>
   );
 }
