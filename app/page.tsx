@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from "@clerk/nextjs";
 import OnboardingPage from "./onboadring";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   const { isLoaded, isSignedIn } = useSession();
@@ -18,5 +19,10 @@ export default function Home() {
 }
 
 function ProfilePage() {
-  return <div>Render profile page if you&apos;re authenticated here</div>;
+  return (
+    <div className="container p-3 mx-auto">
+      <UserButton />
+      Render profile page if you&apos;re authenticated here
+    </div>
+  );
 }
