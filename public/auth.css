@@ -1,0 +1,59 @@
+.cl-internal-b3fm6y {
+  @apply hidden;
+}
+
+.cl-footer {
+  @apply flex justify-center;
+}
+
+.cl-formButtonPrimary {
+  @apply bg-[#fe724c] hover:bg-[#fe724c]/90;
+}
+
+.cl-card {
+  @apply w-full p-0 m-0 bg-transparent rounded-none shadow-none;
+}
+
+.cl-footerActionLink {
+  @apply text-[#fe724c] hover:text-[#fe724c];
+}
+
+.cl-formFieldInput {
+  all: unset;
+  border: 1px solid;
+  @apply p-2 border-gray-200 rounded-md transition-all duration-300 text-slate-900;
+}
+
+.cl-formFieldInput:focus {
+  outline: transparent;
+  @apply outline-none border border-[#fe724c] shadow-none;
+}
+
+.cl-formFieldLabel {
+  all: unset;
+  @apply font-normal text-slate-500;
+}
+
+.cl-rootBox {
+  @apply w-full max-w-xl p-2;
+}
+
+.cl-logoBox {
+  @apply hidden;
+}
+
+.cl-header {
+  @apply hidden;
+}
+
+.cl-identityPreviewEditButton {
+  @apply text-[#fe724c];
+}
+
+.cl-formResendCodeLink {
+  @apply text-[#fe724c];
+}
+
+.cl-otpCodeFieldInput:focus {
+  @apply border-[#fe724c];
+}
