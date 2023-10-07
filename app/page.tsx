@@ -1,6 +1,15 @@
+"use client";
+import { useSession } from "@clerk/nextjs";
 import OnboardingPage from "./onboadring";
 
-export default async function Home() {
+export default function Home() {
+  const { isLoaded, isSignedIn } = useSession();
+  if (!isLoaded) {
+    return <div> Checking status (TODO: Add a loading state or spinner)</div>;
+  }
+  if (isSignedIn) {
+    return <ProfilePage />;
+  }
   return (
     <>
       <OnboardingPage />;
@@ -9,9 +18,5 @@ export default async function Home() {
 }
 
 function ProfilePage() {
-  return (
-    <div>
-      <>content</>
-    </div>
-  );
+  return <div>Render profile page if you&apos;re authenticated here</div>;
 }
