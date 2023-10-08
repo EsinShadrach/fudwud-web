@@ -8,5 +8,5 @@ type ColorSchemeInterface = {
 
 type ClassNameWithChildren = {
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };

@@ -24,7 +24,7 @@ export default function OnboardingPage() {
            */}
           </div>
           <div
-            className={`font-semibold sm:text-6xl text-4xl pt-16 sm:text-center space-y-2`}
+            className={`font-semibold sm:text-6xl text-4xl pt-16 sm:text-center space-y-2 mt-3`}
           >
             <BgText>Welcome to</BgText> <span>Fudwud</span>
             <div className={`text-[#30384F] sm:text-xl text-lg font-normal`}>

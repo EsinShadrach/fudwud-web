@@ -1,28 +1,23 @@
 "use client";
-import { useSession } from "@clerk/nextjs";
+import { UserButton, useSession } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import LoadingPage from "./loading";
 import OnboardingPage from "./onboadring";
-import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   const { isLoaded, isSignedIn } = useSession();
+  const router = useRouter();
   if (!isLoaded) {
-    return <div> Checking status (TODO: Add a loading state or spinner)</div>;
+    return <LoadingPage />;
   }
   if (isSignedIn) {
-    return <ProfilePage />;
+    router.push("/profile");
+    return <LoadingPage />;
   }
+
   return (
     <>
       <OnboardingPage />;
     </>
-  );
-}
-
-function ProfilePage() {
-  return (
-    <div className="container p-3 mx-auto">
-      <UserButton />
-      Render profile page if you&apos;re authenticated here
-    </div>
   );
 }
