@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.25.3",
+    "@heroicons/react": "^2.0.18",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
