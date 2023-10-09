@@ -1,12 +1,12 @@
-import { currentUser, SignOutButton } from "@clerk/nextjs";
+import {currentUser} from "@clerk/nextjs";
 import Image from "next/image";
 import BgBackground from "~/utils/bg-bg";
 import BgText from "~/utils/bg-text";
-import { PrimaryBg } from "~/utils/primary-bg";
-import { PrimaryShadow } from "~/utils/primary-shadow";
-import { titleCase } from "~/utils/titleCase";
-import { UnAuthenticatedProfile } from "./UnAuthenticatedProfile";
-import { PowerIcon } from "@heroicons/react/24/solid";
+import {LogoutButton} from "~/utils/logout-button";
+import {PrimaryBg} from "~/utils/primary-bg";
+import {PrimaryShadow} from "~/utils/primary-shadow";
+import {titleCase} from "~/utils/titleCase";
+import {UnAuthenticatedProfile} from "./UnAuthenticatedProfile";
 
 export async function generateMetadata() {
   const user = await currentUser();
@@ -18,13 +18,13 @@ export async function generateMetadata() {
 export default async function ProfilePage() {
   const user = await currentUser();
   if (!user) {
-    return <LogoutButton />;
+    return <UnAuthenticatedProfile />;
   }
   return (
     <section className="container mx-auto">
       <PrimaryBg className="w-full h-40 rounded-b-2xl">
         <div className="p-3">
-          <SignOutButton children={<LogoutButton />} />
+          <LogoutButton />
         </div>
       </PrimaryBg>
       <div className={``}>
@@ -50,15 +50,5 @@ export default async function ProfilePage() {
         </div>
       </div>
     </section>
-  );
-}
-function LogoutButton() {
-  return (
-    <div>
-      <BgBackground className="flex items-center p-1 rounded-full md:pr-2 w-fit gap-1 hover:brightness-90 transition-all duration-300">
-        <PowerIcon className={`h-6 w-6`} />
-        <span className="hidden md:block">Logout</span>
-      </BgBackground>
-    </div>
   );
 }
