@@ -8,6 +8,8 @@ import { LogoutButton } from "~/utils/logout-button";
 import { PrimaryBg } from "~/utils/primary-bg";
 import { PrimaryShadow } from "~/utils/primary-shadow";
 import { titleCase } from "~/utils/titleCase";
+import { AccountSettingsButton } from "./AccountSettingsButton";
+import { FormLikeField } from "./FormLikeField";
 import { UnAuthenticatedProfile } from "./UnAuthenticatedProfile";
 
 export async function generateMetadata() {
@@ -29,8 +31,9 @@ export default async function ProfilePage() {
           <LogoutButton />
         </div>
         <Link href={`/profile/edit`} className="hidden p-3 md:block">
-          <BgBackground className="p-1 rounded-full">
+          <BgBackground className="flex items-center p-1 pr-2 rounded-full gap-1">
             <PencilSquareIcon className="w-6 h-6" />
+            <span>Edit Profile</span>
           </BgBackground>
         </Link>
       </PrimaryBg>
@@ -55,6 +58,25 @@ export default async function ProfilePage() {
             <Link href={`/profile/edit`}>
               <BgText className="text-sm opacity-75">Edit Profile</BgText>
             </Link>
+          </div>
+          <div className="flex flex-wrap items-center justify-center text-start gap-3">
+            <FormLikeField
+              content={titleCase(user.username!)}
+              fieldName="Username"
+            />
+            <FormLikeField
+              content={user.emailAddresses[0].emailAddress}
+              fieldName="Email"
+            />
+            <FormLikeField
+              content={
+                user.phoneNumbers[0]
+                  ? user.phoneNumbers[0].phoneNumber
+                  : "None added"
+              }
+              fieldName="Phone Number"
+            />
+            <AccountSettingsButton />
           </div>
         </div>
         <div className="fixed inset-x-0 bottom-0 pb-2 text-center">
