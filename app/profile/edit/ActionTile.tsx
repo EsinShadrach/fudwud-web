@@ -1,7 +1,6 @@
 "use client";
 import { useClerk } from "@clerk/nextjs";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
 import BgText from "~/utils/bg-text";
 
 interface ActionTileInterface {
