@@ -1,20 +1,15 @@
-import {
-  ChevronRightIcon,
-  LockClosedIcon,
-  StarIcon,
-  UserIcon,
-} from "@heroicons/react/24/solid";
-import Link from "next/link";
+import { LockClosedIcon, StarIcon, UserIcon } from "@heroicons/react/24/solid";
 import BgText from "~/utils/bg-text";
+import { ActionTile } from "./ActionTile";
 
 export default async function EditProfilePage() {
   return (
     <section className="container flex flex-col min-h-screen p-3 pb-0 mx-auto">
-      <div className="text-center">
+      <div className="text-center space-y-2">
         <h1 className="text-xl font-semibold sm:text-2xl">
           <BgText>Account Settings</BgText>
         </h1>
-        <div className="opacity-75">
+        <div className="text-sm opacity-75 sm:text-base">
           <BgText>
             Update your account settings like password and profile edit
           </BgText>
@@ -46,35 +41,5 @@ export default async function EditProfilePage() {
         />
       </div>
     </section>
-  );
-}
-
-interface ActionTileInterface {
-  title: string;
-  subtitle: string;
-  route: string;
-  icon: JSX.Element;
-}
-
-function ActionTile({ route, subtitle, title, icon }: ActionTileInterface) {
-  return (
-    <Link href={route} className="w-full">
-      <div className="flex items-center w-full max-w-xl p-3 border-b hover:bg-gray-300/20 transition-all duration-300 gap-3 group border-inherit">
-        <BgText>{icon}</BgText>
-        <div>
-          <div>
-            <BgText>{title}</BgText>
-          </div>
-          <div className="opacity-50">
-            <small className="max-w-xs overflow-hidden text-xs sm:text-sm whitespace-nowrap">
-              <BgText>{subtitle}</BgText>
-            </small>
-          </div>
-        </div>
-        <div className="ml-auto transition-all duration-300 -translate-x-2 group-hover:translate-x-0">
-          <ChevronRightIcon className="w-6 h-6" />
-        </div>
-      </div>
-    </Link>
   );
 }
