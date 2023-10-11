@@ -10,3 +10,7 @@ type ClassNameWithChildren = {
   className?: string;
   children?: React.ReactNode;
 };
+
+interface DynamicParamInterface {
+  params: { id: string };
+}
