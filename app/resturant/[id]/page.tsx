@@ -1,5 +1,6 @@
 // TODO:ADD IMAGE TO OPENGRAPH
 import type { Metadata } from "next";
+import Lorem1000 from "~/utils/lorem-1000";
 
 type Props = {
   params: { id: string };
@@ -19,8 +20,9 @@ export async function generateMetadata({
 
 export default function ResturantPage({ params }: DynamicParamInterface) {
   return (
-    <section className="container flex items-center justify-center min-h-screen p-3 mx-autp">
+    <section className="container min-h-screen p-3 mx-auto overflow-auto">
       Resturant ID -&gt; <b>{params.id}</b>
+      <Lorem1000 />
     </section>
   );
 }

@@ -14,3 +14,7 @@ type ClassNameWithChildren = {
 interface DynamicParamInterface {
   params: { id: string };
 }
+
+type ClassNameWithNoChildren = {
+  className?: string;
+};
