@@ -22,7 +22,6 @@ export default function ResturantPage({ params }: DynamicParamInterface) {
   return (
     <section className="container min-h-screen p-3 mx-auto overflow-auto">
       Resturant ID -&gt; <b>{params.id}</b>
-      <Lorem1000 />
     </section>
   );
 }
