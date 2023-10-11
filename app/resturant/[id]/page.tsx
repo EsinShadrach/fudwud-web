@@ -1,6 +1,11 @@
 // TODO:ADD IMAGE TO OPENGRAPH
+import { currentUser } from "@clerk/nextjs";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import type { Metadata } from "next";
-import { OpenNavButton } from "../toggleButton";
+import BgText from "~/utils/bg-text";
+import { PrimaryBg } from "~/utils/primary-bg";
+import UserImageButton from "~/utils/user-img-button";
+import { ToggleButton } from "../toggleButton";
 
 type Props = {
   params: { id: string };
@@ -18,15 +23,29 @@ export async function generateMetadata({
   };
 }
 
-export default function ResturantPage({ params, searchParams }: Props) {
+export default async function ResturantPage({ params, searchParams }: Props) {
+  const user = await currentUser();
+  if (!user) return <>Login</>;
   return (
     <section className="container min-h-screen p-3 mx-auto overflow-auto">
-      <OpenNavButton />
-      <br />
-        <br />
-      Resturant ID -&gt; <b>{params.id}</b>
-      <br />
-      TABLE NUMBER =&gt; <b>{searchParams.table}</b>
+      <div className="flex items-center justify-between gap-3">
+        <ToggleButton />
+        <div className="flex flex-col items-center justify-center gap-0.5">
+          <BgText className="flex items-center justify-center text-sm opacity-75 gap-3">
+            <div>Deliver to</div>
+            <ChevronDownIcon className="w-4 h-4" />
+          </BgText>
+          <div className="sm:mr-auto">
+            <small>Table - {searchParams.table}</small>
+          </div>
+        </div>
+        <UserImageButton imageUrl={user.imageUrl} username={user.username!} />
+      </div>
+      <div className="mt-5">
+        <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
+          <BgText>Place order for table</BgText> {searchParams.table}
+        </h1>
+      </div>
     </section>
   );
 }

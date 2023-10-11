@@ -1,12 +1,12 @@
 "use client";
-import {XMarkIcon} from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
-import {useSidebarState} from "~/context/sidebar-context";
+import { useSidebarState } from "~/context/sidebar-context";
 import BgText from "./bg-text";
-import {LogoutButton} from "./LogoutButton";
-import {Routes} from "./Routes";
-import {titleCase} from "./titleCase";
+import { LogoutButton } from "./LogoutButton";
+import { Routes } from "./Routes";
+import { titleCase } from "./titleCase";
 
 interface SidebarMainInterface {
   imageUrl: string;
@@ -19,13 +19,12 @@ export function SidebarMain({
   username,
   emailAddresses,
 }: SidebarMainInterface) {
-
   const { handleClose, opened, sidebarRef } = useSidebarState();
 
   return (
     <aside
       ref={sidebarRef}
-      className={`fixed flex flex-col w-full h-screen max-w-xs p-3 py-4 overflow-auto border-r-2 border-gray-200 sm:relative bg-inherit transition-all duration-300 ${
+      className={`fixed flex flex-col w-full h-screen max-w-xs p-3 py-4 overflow-auto border-r-2 border-gray-200 sm:relative bg-inherit transition-all duration-300 z-50 ${
         opened ? "translate-x-0" : "sm:translate-x-0 -translate-x-full"
       }`}
     >
@@ -52,7 +51,9 @@ export function SidebarMain({
       </div>
       <div>
         <BgText className="text-sm opacity-50 sm:text-base">
-          {emailAddresses}
+          <div className="w-full max-w-xs overflow-hidden text-ellipsis">
+            {emailAddresses}
+          </div>
         </BgText>
       </div>
       <Routes />
