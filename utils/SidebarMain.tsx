@@ -1,13 +1,12 @@
 "use client";
-import { EmailAddress } from "@clerk/nextjs/server";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import {XMarkIcon} from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import {useSidebarState} from "~/context/sidebar-context";
 import BgText from "./bg-text";
-import { LogoutButton } from "./LogoutButton";
-import { Routes } from "./Routes";
-import { titleCase } from "./titleCase";
+import {LogoutButton} from "./LogoutButton";
+import {Routes} from "./Routes";
+import {titleCase} from "./titleCase";
 
 interface SidebarMainInterface {
   imageUrl: string;
@@ -20,24 +19,8 @@ export function SidebarMain({
   username,
   emailAddresses,
 }: SidebarMainInterface) {
-  const [opened, setOpened] = useState(true);
-  const sidebarRef = useRef<HTMLDivElement>(null);
 
-  function closeSidebar() {
-    setOpened(false);
-  }
-  useEffect(() => {
-    function handleClicks(e: MouseEvent): void {
-      if (sidebarRef.current?.contains(e.target as Node)) {
-        return;
-      }
-      setOpened(false);
-    }
-    window.addEventListener("click", handleClicks);
-    return () => {
-      window.removeEventListener("click", handleClicks);
-    };
-  }, []);
+  const { handleClose, opened, sidebarRef } = useSidebarState();
 
   return (
     <aside
@@ -47,7 +30,7 @@ export function SidebarMain({
       }`}
     >
       <button
-        onClick={closeSidebar}
+        onClick={handleClose}
         className="block p-1 ml-auto rounded-full bg-gray-300/20 sm:hidden"
       >
         <XMarkIcon className="w-6 h-6" />

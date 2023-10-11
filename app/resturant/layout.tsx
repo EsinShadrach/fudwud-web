@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SidebarStateProvider } from "~/context/sidebar-context";
 import Sidebar from "~/utils/sidebar";
 
 export const metadata: Metadata = {
@@ -11,9 +12,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex max-h-screen">
-      <Sidebar />
-      {children}
-    </main>
+    <SidebarStateProvider>
+      <main className="flex max-h-screen">
+        <Sidebar />
+        {children}
+      </main>
+    </SidebarStateProvider>
   );
 }
