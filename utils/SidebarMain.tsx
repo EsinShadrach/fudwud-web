@@ -12,7 +12,7 @@ import { titleCase } from "./titleCase";
 interface SidebarMainInterface {
   imageUrl: string;
   username: string;
-  emailAddresses: EmailAddress[];
+  emailAddresses: string;
 }
 
 export function SidebarMain({
@@ -27,25 +27,28 @@ export function SidebarMain({
     setOpened(false);
   }
   useEffect(() => {
-    //
-    function handleClicks(e: MouseEvent) {
-      console.log(e.target === sidebarRef.current);
+    function handleClicks(e: MouseEvent): void {
+      if (sidebarRef.current?.contains(e.target as Node)) {
+        return;
+      }
+      setOpened(false);
     }
-
     window.addEventListener("click", handleClicks);
-    return () => window.removeEventListener("click", handleClicks);
+    return () => {
+      window.removeEventListener("click", handleClicks);
+    };
   }, []);
 
   return (
     <aside
       ref={sidebarRef}
       className={`fixed flex flex-col w-full h-screen max-w-xs p-3 py-4 overflow-auto border-r-2 border-gray-200 sm:relative bg-inherit transition-all duration-300 ${
-        opened ? "translate-x-0" : "-translate-x-full"
+        opened ? "translate-x-0" : "sm:translate-x-0 -translate-x-full"
       }`}
     >
       <button
         onClick={closeSidebar}
-        className="p-1 ml-auto rounded-full bg-gray-300/20"
+        className="block p-1 ml-auto rounded-full bg-gray-300/20 sm:hidden"
       >
         <XMarkIcon className="w-6 h-6" />
       </button>
@@ -66,7 +69,7 @@ export function SidebarMain({
       </div>
       <div>
         <BgText className="text-sm opacity-50 sm:text-base">
-          {emailAddresses[0].emailAddress}
+          {emailAddresses}
         </BgText>
       </div>
       <Routes />

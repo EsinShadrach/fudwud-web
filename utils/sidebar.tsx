@@ -10,7 +10,7 @@ export default async function Sidebar() {
       <SidebarMain
         username={user.username!}
         imageUrl={user.imageUrl!}
-        emailAddresses={user.emailAddresses}
+        emailAddresses={user.emailAddresses[0].emailAddress}
       />
     </BgBackground>
   );

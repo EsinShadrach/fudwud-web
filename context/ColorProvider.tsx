@@ -24,7 +24,7 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     async function getColor() {
-      const response = await fetch("api/colors");
+      const response = await fetch("/api/colors");
       if (response.ok) {
         console.log("Response is okay");
         const data: ColorSchemeInterface = await response.json();
