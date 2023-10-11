@@ -18,11 +18,15 @@ export async function generateMetadata({
   };
 }
 
-export default function ResturantPage({ params }: DynamicParamInterface) {
+export default function ResturantPage({ params, searchParams }: Props) {
   return (
     <section className="container min-h-screen p-3 mx-auto overflow-auto">
-      Resturant ID -&gt; <b>{params.id}</b>
       <OpenNavButton />
+      <br />
+        <br />
+      Resturant ID -&gt; <b>{params.id}</b>
+      <br />
+      TABLE NUMBER =&gt; <b>{searchParams.table}</b>
     </section>
   );
 }

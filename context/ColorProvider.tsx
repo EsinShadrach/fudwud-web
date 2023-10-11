@@ -26,12 +26,10 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     async function getColor() {
       const response = await fetch("/api/colors");
       if (response.ok) {
-        console.log("Response is okay");
         const data: ColorSchemeInterface = await response.json();
         setColorSchemeState(data);
-        console.log(data);
       } else {
-        console.log("Response is not okay");
+        console.error("Error");
       }
     }
     getColor();

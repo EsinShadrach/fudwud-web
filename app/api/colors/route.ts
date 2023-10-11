@@ -7,20 +7,6 @@ export async function GET() {
     backgroundText: "#111719",
   };
 
-  // try {
-  //   const response = await fetch("http://localhost:3001/api/colors");
-  //   if (response.ok) {
-  //     console.log("Response is okay");
-  //     const data: ColorSchemeInterface = await response.json();
-  //     colors = data;
-  //     console.log(data);
-  //   } else {
-  //     console.log("Response is not okay");
-  //   }
-  // } catch (error) {
-  //   console.log(error);
-  // }
-
   const jsonResponse = JSON.stringify(colors);
 
   return new Response(jsonResponse, {
