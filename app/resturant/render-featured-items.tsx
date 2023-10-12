@@ -38,8 +38,14 @@ export default function RenderFeaturedItems() {
         <BgText className="text-lg font-semibold sm:text-xl">
           Popular Items
         </BgText>
-        <div>
-          <PopularItemCard />
+        <div className="flex flex-wrap mt-5 gap-6">
+          {popularItem ? (
+            popularItem.map((item, index) => (
+              <PopularItemCard key={index} {...item} />
+            ))
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
