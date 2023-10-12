@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+  color: red;
+  background: red;
+}
+
 .cl-internal-b3fm6y {
   @apply hidden;
 }

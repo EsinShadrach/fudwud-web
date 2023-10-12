@@ -18,3 +18,14 @@ interface DynamicParamInterface {
 type ClassNameWithNoChildren = {
   className?: string;
 };
+
+interface FoodItem {
+  id: number;
+  name: string;
+  prepareTime: string;
+  image: string;
+  categories: string[];
+  customerFavorite: boolean;
+  rating: string | number;
+  ratingCount: number;
+}
