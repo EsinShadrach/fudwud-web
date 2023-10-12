@@ -29,13 +29,13 @@ export default function BottomNav({ path }: { path: string }) {
     <BgBackground className="fixed inset-x-0 bottom-0 flex items-center justify-around p-3 sm:hidden">
       {routes.map((Route, index) => (
         <div key={index} className="relative">
-          {
-           Route.supportsNotification && <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center absolute -top-3 -right-4">
+          {Route.supportsNotification && (
+            <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center absolute -top-3 -right-4">
               <small className="text-xs">
                 <BgText>3</BgText>
               </small>
             </AccentBg>
-          }
+          )}
           <Route.icon
             className={`w-6 h-6 transition-all duration-300 relative ${
               Route.path.includes(pathname) ? "" : "text-gray-300"
