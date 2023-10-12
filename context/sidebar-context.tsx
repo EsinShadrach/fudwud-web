@@ -1,6 +1,4 @@
 "use client";
-// TODO:  Sync this state to the state of the navbar so that when this is clicked the nav bar closes to...?
-// TODO: Maybe pass in a ref gotten from this provider
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 interface SidebarInterface {
@@ -40,6 +38,7 @@ export function SidebarStateProvider({
   }
 
   useEffect(() => {
+    console.log("running effect from sidebar context");
     function handleClicks(e: MouseEvent): void {
       const isButton = buttonRef.current?.contains(e.target as Node);
       const isSidebar = sidebarRef.current?.contains(e.target as Node);

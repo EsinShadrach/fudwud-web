@@ -1,10 +1,12 @@
 // TODO:ADD IMAGE TO OPENGRAPH
 import { currentUser } from "@clerk/nextjs";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import type { Metadata } from "next";
 import BgText from "~/utils/bg-text";
-import { PrimaryBg } from "~/utils/primary-bg";
 import UserImageButton from "~/utils/user-img-button";
+import FilterButton from "../filter-button";
+import RenderFeaturedItems from "../render-featured-items";
+import SearchField from "../search-field";
 import { ToggleButton } from "../toggleButton";
 
 type Props = {
@@ -25,6 +27,7 @@ export async function generateMetadata({
 
 export default async function ResturantPage({ params, searchParams }: Props) {
   const user = await currentUser();
+  console.log(params.id);
   if (!user) return <>Login</>;
   return (
     <section className="container min-h-screen p-3 mx-auto overflow-auto">
@@ -45,6 +48,19 @@ export default async function ResturantPage({ params, searchParams }: Props) {
         <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
           <BgText>Place order for table</BgText> {searchParams.table}
         </h1>
+      </div>
+      <div className="flex items-center w-full max-w-lg my-10 gap-6">
+        <SearchField table={searchParams.table} />
+        <FilterButton table={searchParams.table} />
+      </div>
+      <div className="flex items-center justify-between gap-3">
+        <BgText className="text-lg font-semibold sm:text-xl">
+          Featured Items
+        </BgText>
+        <div className="flex items-center p-1 px-2 text-sm rounded-full hover:bg-gray-200 gap-1">
+          View all <ChevronRightIcon className="w-4 h-4" />
+        </div>
+        <RenderFeaturedItems />
       </div>
     </section>
   );
