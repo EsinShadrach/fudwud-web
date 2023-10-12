@@ -1,6 +1,6 @@
 // TODO:ADD IMAGE TO OPENGRAPH
 import { currentUser } from "@clerk/nextjs";
-import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import type { Metadata } from "next";
 import BgText from "~/utils/bg-text";
 import UserImageButton from "~/utils/user-img-button";
@@ -8,6 +8,7 @@ import FilterButton from "../filter-button";
 import RenderFeaturedItems from "../render-featured-items";
 import SearchField from "../search-field";
 import { ToggleButton } from "../toggleButton";
+import { ViewAllLink } from "./ViewAllLink";
 
 type Props = {
   params: { id: string };
@@ -53,15 +54,13 @@ export default async function ResturantPage({ params, searchParams }: Props) {
         <SearchField table={searchParams.table} />
         <FilterButton table={searchParams.table} />
       </div>
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center justify-between my-5 gap-3">
         <BgText className="text-lg font-semibold sm:text-xl">
           Featured Items
         </BgText>
-        <div className="flex items-center p-1 px-2 text-sm rounded-full hover:bg-gray-200 gap-1">
-          View all <ChevronRightIcon className="w-4 h-4" />
-        </div>
-        <RenderFeaturedItems />
+        <ViewAllLink path="featured" table={searchParams.table} />
       </div>
+      <RenderFeaturedItems />
     </section>
   );
 }
