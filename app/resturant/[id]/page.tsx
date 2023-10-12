@@ -28,7 +28,6 @@ export async function generateMetadata({
 
 export default async function ResturantPage({ params, searchParams }: Props) {
   const user = await currentUser();
-  console.log(params.id);
   if (!user) return <>Login</>;
   return (
     <section className="container min-h-screen p-3 mx-auto overflow-auto">
