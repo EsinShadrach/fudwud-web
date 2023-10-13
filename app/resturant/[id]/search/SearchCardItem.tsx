@@ -2,6 +2,7 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { useTableData } from "~/context/use-table";
 import BgBackground from "~/utils/bg-bg";
 import BgText from "~/utils/bg-text";
 import { HeartIcon } from "~/utils/icons/heart-active";
@@ -16,8 +17,10 @@ export function SearchCardItem({
   rating,
   ratingCount,
 }: FoodItem) {
+  const { resturantID, table } = useTableData();
+  const path = `/resturant/${resturantID}/order/${id}/?table=${table}`;
   return (
-    <Link href={`${id}`} className="w-full max-w-md">
+    <Link href={path} className="w-full max-w-md">
       <div className="flex w-full h-32 max-w-md overflow-hidden rounded-lg bg-gray-200/20 gap-3 transition-all duration-300 hover:bg-gray-200/40">
         <Image
           alt={name}
