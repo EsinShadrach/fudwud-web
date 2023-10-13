@@ -23,7 +23,7 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
   const contextValue = { colorSchemeState };
 
   useEffect(() => {
-  console.log("Runnning effect from color provider")
+    console.log("Runnning effect from color provider");
     async function getColor() {
       const response = await fetch("/api/colors");
       if (response.ok) {
@@ -41,8 +41,8 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
       <main
         className="min-h-screen"
         style={{
-          color: colorSchemeState.primary,
-          backgroundColor: colorSchemeState.background,
+          color: `rgb(${colorSchemeState.primary})`,
+          backgroundColor: `rbg(${colorSchemeState.background})`,
         }}
       >
         {children}

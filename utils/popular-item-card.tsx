@@ -12,6 +12,7 @@ export default function PopularItemCard({
   name,
   rating,
   ratingCount,
+  price,
 }: FoodItem) {
   return (
     <div className="w-full max-w-xs overflow-hidden shadow-md rounded-2xl bg-inherit">
@@ -19,7 +20,7 @@ export default function PopularItemCard({
         <div className="absolute inset-0 flex flex-col p-3 pb-0 bg-black/20 rounded-b-2xl">
           <div className="flex justify-between">
             <BgBackground className="flex items-center justify-center p-1 text-xs font-semibold rounded-full bg-inherit w-fit">
-              $<BgText>10.22</BgText>
+              $<BgText>{price}</BgText>
             </BgBackground>
             <div>
               <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full">

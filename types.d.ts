@@ -9,6 +9,7 @@ type ColorSchemeInterface = {
 type ClassNameWithChildren = {
   className?: string;
   children?: React.ReactNode;
+  opacity?: string;
 };
 
 interface DynamicParamInterface {
@@ -28,4 +29,5 @@ interface FoodItem {
   customerFavorite: boolean;
   rating: string | number;
   ratingCount: number;
+  price: number | string;
 }
