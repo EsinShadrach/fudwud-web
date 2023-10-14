@@ -31,24 +31,26 @@ export function SearchCardItem({
           className="object-cover w-full max-w-[6rem] h-auto sm:h-32 sm:max-w-[8rem]"
         />
         <div className="w-full p-2 space-y-3">
-          <div className="flex items-center justify-between w-full font-semibold">
+          <BgText className="flex items-center justify-between w-full font-semibold text-opacity-90">
             {name}
             {customerFavorite && (
-              <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full">
+              <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full bg-opacity-100">
                 <HeartIcon className="w-5 h-5" />
               </PrimaryBg>
             )}
-          </div>
-          <div className="flex items-center justify-between gap-2">
+          </BgText>
+          <BgText className="flex items-center justify-between gap-2">
             ${price}
-            <BgBackground className="flex items-center p-1 px-2 rounded-full gap-3">
-              <BgText className="text-xs font-semibold">{rating}</BgText>
+            <BgBackground className="flex items-center p-1 px-2 rounded-full gap-3 bg-opacity-100">
+              <BgText className="text-xs font-semibold text-opacity-100">
+                {rating}
+              </BgText>
               <StarIcon className="w-4 h-4" />
-              <BgText className="text-xs opacity-50">
+              <BgText className="text-xs text-opacity-50">
                 ({ratingCount - 1}+)
               </BgText>
             </BgBackground>
-          </div>
+          </BgText>
           <div className="flex items-center text-xs italic gap-1">
             Prepare time: {prepareTime}
           </div>

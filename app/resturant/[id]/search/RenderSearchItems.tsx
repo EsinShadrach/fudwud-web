@@ -20,11 +20,13 @@ function RenderSearchItems({ search }: { search: WithSearch }) {
         if (response.ok) {
           const responseData: FoodItem[] = await response.json();
           setItems(responseData);
-
           const filteredItems = responseData.filter((item) =>
             item.name.toLowerCase().includes(search.toLowerCase())
           );
-          setFilterBySearch(filteredItems);
+          const sortedItems = filteredItems
+            .slice()
+            .sort((a, b) => a.name.localeCompare(b.name));
+          setFilterBySearch(sortedItems);
         }
       } catch (error) {
         const errorM = error as Error;
@@ -69,9 +71,8 @@ function EmptySearch({ search }: { search: WithSearch }) {
     <div className="flex flex-col items-center justify-center w-full h-full pt-5 gap-3">
       <Image alt="Not Found" src={notFound} className="w-full max-w-md" />
       <BgText className="text-2xl font-semibold text-opacity-75">
-        Couldn&apos;t Find {search}
+        Couldn&apos;t Find &ldquo;{search}&rdquo;
       </BgText>
-      <div style={{ color: "rgb(255 50 20 / 0.2)" }}>apple</div>
     </div>
   );
 }
