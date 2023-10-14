@@ -4,7 +4,6 @@ import { useColorScheme } from "~/context/ColorProvider";
 export default function BgBackground({
   children,
   className,
-  opacity,
 }: ClassNameWithChildren) {
   const { colorSchemeState } = useColorScheme();
   return (

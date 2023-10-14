@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import {useTableData} from "~/context/use-table";
+import { useTableData } from "~/context/use-table";
 import BgBackground from "~/utils/bg-bg";
 import BgText from "~/utils/bg-text";
 import ClockIcon from "~/utils/icons/clock";
-import {HeartIcon} from "~/utils/icons/heart-active";
+import { HeartIcon } from "~/utils/icons/heart-active";
 import StarIcon from "~/utils/icons/star";
-import {PrimaryBg} from "~/utils/primary-bg";
+import { PrimaryBg } from "~/utils/primary-bg";
 export function FeaturedItemCard({
   categories,
   customerFavorite,
@@ -24,15 +24,17 @@ export function FeaturedItemCard({
       <Link href={path}>
         <div className="relative">
           <div className="absolute inset-0 flex items-start justify-between p-3 bg-black/20">
-            <BgBackground className="flex items-center p-1 px-2 rounded-full">
-              <BgText className="text-sm font-semibold">{rating}</BgText>
+            <BgBackground className="flex items-center p-1 px-2 rounded-full bg-opacity-100">
+              <BgText className="text-sm font-semibold text-opacity-100">
+                {rating}
+              </BgText>
               <StarIcon className="w-6 h-6" />
-              <BgText className="text-xs opacity-50">
+              <BgText className="text-xs text-opacity-50">
                 ({ratingCount - 1}+)
               </BgText>
             </BgBackground>
             {customerFavorite && (
-              <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full">
+              <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full bg-opacity-100">
                 <HeartIcon className="w-5 h-5" />
               </PrimaryBg>
             )}
@@ -46,10 +48,10 @@ export function FeaturedItemCard({
           />
         </div>
         <div className="p-3 space-y-0.5">
-          <BgText className="font-semibold opacity-90">{name}</BgText>
+          <BgText className="font-semibold text-opacity-90">{name}</BgText>
           <div className="flex items-center gap-1">
             <ClockIcon className="w-4 h-4" />
-            <BgText className="opacity-75">
+            <BgText className="text-opacity-75">
               <small>{prepareTime}</small>
             </BgText>
           </div>

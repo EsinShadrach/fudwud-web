@@ -26,19 +26,19 @@ export default async function ProfilePage() {
   }
   return (
     <section className="container mx-auto">
-      <PrimaryBg className="flex justify-between w-full h-40 rounded-b-2xl">
+      <PrimaryBg className="flex justify-between w-full h-40 rounded-b-2xl bg-opacity-100">
         <div className="p-3">
           <LogoutButton />
         </div>
         <Link href={`/profile/edit`} className="hidden p-3 md:block">
-          <BgBackground className="flex items-center p-1 pr-2 rounded-full gap-1">
+          <BgBackground className="flex items-center p-1 pr-2 rounded-full gap-1 bg-opacity-100">
             <PencilSquareIcon className="w-6 h-6" />
             <span>Edit Profile</span>
           </BgBackground>
         </Link>
       </PrimaryBg>
       <div className={``}>
-        <BgBackground className="p-2 mx-auto rounded-full shadow-xl -translate-y-1/2 w-fit">
+        <BgBackground className="p-2 mx-auto rounded-full shadow-xl -translate-y-1/2 w-fit bg-opacity-100">
           <PrimaryShadow className="rounded-full">
             <Image
               alt={`${user.username}'s Profile Photo`}
@@ -51,12 +51,12 @@ export default async function ProfilePage() {
           </PrimaryShadow>
         </BgBackground>
         <div className="container p-3 mx-auto -mt-10 text-center space-y-2">
-          <BgText className="text-xl font-semibold sm:text-2xl">
+          <BgText className="text-xl font-semibold sm:text-2xl text-opacity-100">
             ~ {titleCase(user.username!)} ~
           </BgText>
           <div>
             <Link href={`/profile/edit`}>
-              <BgText className="text-sm opacity-75">Edit Profile</BgText>
+              <BgText className="text-sm text-opacity-75">Edit Profile</BgText>
             </Link>
           </div>
           <div className="flex flex-wrap items-center justify-center text-start gap-3">
