@@ -45,12 +45,12 @@ export function SidebarMain({
         />
       </Link>
       <div className="mt-4">
-        <BgText className="text-2xl font-medium sm:text-3xl">
+        <BgText className="text-2xl font-medium sm:text-3xl text-opacity-90">
           {titleCase(username)}
         </BgText>
       </div>
       <div>
-        <BgText className="text-sm opacity-50 sm:text-base">
+        <BgText className="text-sm text-opacity-50 sm:text-base">
           <div className="w-full max-w-xs overflow-hidden text-ellipsis">
             {emailAddresses}
           </div>

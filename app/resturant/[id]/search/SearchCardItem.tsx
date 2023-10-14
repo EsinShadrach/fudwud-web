@@ -16,9 +16,10 @@ export function SearchCardItem({
   price,
   rating,
   ratingCount,
+  customerFavorite,
 }: FoodItem) {
   const { resturantID, table } = useTableData();
-  const path = `/resturant/${resturantID}/order/${id}/?table=${table}`;
+  const path = `/resturant/${resturantID}/menu/${id}/?table=${table}`;
   return (
     <Link href={path} className="w-full max-w-md">
       <div className="flex w-full h-32 max-w-md overflow-hidden rounded-lg bg-gray-200/20 gap-3 transition-all duration-300 hover:bg-gray-200/40">
@@ -32,9 +33,11 @@ export function SearchCardItem({
         <div className="w-full p-2 space-y-3">
           <div className="flex items-center justify-between w-full font-semibold">
             {name}
-            <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full">
-              <HeartIcon className="w-5 h-5" />
-            </PrimaryBg>
+            {customerFavorite && (
+              <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full">
+                <HeartIcon className="w-5 h-5" />
+              </PrimaryBg>
+            )}
           </div>
           <div className="flex items-center justify-between gap-2">
             ${price}

@@ -12,7 +12,7 @@ export function PrimaryBg({
     <div
       className={className}
       style={{
-        backgroundColor: `rgb(${colorSchemeState.primary}, ${opacity ?? "1"})`,
+        backgroundColor: `rgb(${colorSchemeState.primary} / var(--tw-bg-opacity))`,
       }}
     >
       {children}

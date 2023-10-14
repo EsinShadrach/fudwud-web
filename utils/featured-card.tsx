@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {useTableData} from "~/context/use-table";
 import BgBackground from "~/utils/bg-bg";
 import BgText from "~/utils/bg-text";
 import ClockIcon from "~/utils/icons/clock";
-import { HeartIcon } from "~/utils/icons/heart-active";
+import {HeartIcon} from "~/utils/icons/heart-active";
 import StarIcon from "~/utils/icons/star";
-import { PrimaryBg } from "~/utils/primary-bg";
+import {PrimaryBg} from "~/utils/primary-bg";
 export function FeaturedItemCard({
   categories,
   customerFavorite,
@@ -17,11 +17,11 @@ export function FeaturedItemCard({
   rating,
   ratingCount,
 }: FoodItem) {
-  const pathame = usePathname();
-  const redirectPath = `${pathame}/${id}`;
+  const { resturantID, table } = useTableData();
+  const path = `/resturant/${resturantID}/menu/${id}/?table=${table}`;
   return (
     <div className="flex-shrink-0 w-full max-w-md overflow-hidden shadow-lg rounded-xl hover:shadow-xl transiton-all duration-300">
-      <Link href={redirectPath}>
+      <Link href={path}>
         <div className="relative">
           <div className="absolute inset-0 flex items-start justify-between p-3 bg-black/20">
             <BgBackground className="flex items-center p-1 px-2 rounded-full">

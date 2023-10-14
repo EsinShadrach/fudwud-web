@@ -30,13 +30,13 @@ export default function BottomNav() {
     },
   ];
   return (
-    <BgBackground className="fixed inset-x-0 bottom-0 flex items-center justify-around p-3 sm:hidden">
+    <BgBackground className="fixed inset-x-0 bottom-0 flex items-center justify-around p-3 sm:hidden bg-opacity-100">
       {routes.map((Route, index) => (
         <Link href={Route.path} key={index} className="relative">
           {Route.supportsNotification && (
-            <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center absolute -top-3 -right-4">
+            <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center absolute -top-3 -right-4 bg-opacity-100">
               <small className="text-xs">
-                <BgText>3</BgText>
+                <BgText className="text-opacity-100">3</BgText>
               </small>
             </AccentBg>
           )}

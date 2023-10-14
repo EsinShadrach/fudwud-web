@@ -13,7 +13,9 @@ export default function LoadingPage() {
       >
         <Image alt="Fudwud Logo" src={logo} />
       </div>
-      <BgText className="text-4xl font-semibold">FudWud</BgText>
+      <BgText className="text-4xl font-semibold text-opacity-100">
+        FudWud
+      </BgText>
     </PrimaryBg>
   );
 }

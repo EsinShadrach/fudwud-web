@@ -34,7 +34,7 @@ export default async function ResturantPage({ params, searchParams }: Props) {
       <div className="flex items-center justify-between gap-3">
         <ToggleButton />
         <div className="flex flex-col items-center justify-center gap-0.5">
-          <BgText className="flex items-center justify-center text-sm opacity-75 gap-3">
+          <BgText className="flex items-center justify-center text-sm text-opacity-75 gap-3">
             <div>Deliver to</div>
             <ChevronDownIcon className="w-4 h-4" />
           </BgText>
@@ -46,7 +46,8 @@ export default async function ResturantPage({ params, searchParams }: Props) {
       </div>
       <div className="mt-5">
         <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
-          <BgText>Place order for table</BgText> {searchParams.table}
+          <BgText className="text-opacity-90">Place order for table</BgText>{" "}
+          {searchParams.table}
         </h1>
       </div>
       <div className="flex items-center w-full max-w-lg my-10 gap-6">
@@ -54,10 +55,10 @@ export default async function ResturantPage({ params, searchParams }: Props) {
         <FilterButton table={searchParams.table} />
       </div>
       <div className="flex items-center justify-between my-5 gap-3">
-        <BgText className="text-lg font-semibold sm:text-xl">
+        <BgText className="text-lg font-semibold sm:text-xl text-opacity-90">
           Featured Items
         </BgText>
-        <ViewAllLink path="featured" table={searchParams.table} />
+        <ViewAllLink table={searchParams.table} />
       </div>
       <RenderFeaturedItems />
     </section>

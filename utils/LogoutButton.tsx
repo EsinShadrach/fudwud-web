@@ -9,7 +9,7 @@ export function LogoutButton() {
   const { signOut } = useClerk();
   return (
     <button onClick={() => signOut()} className="mt-auto rounded-full w-fit">
-      <PrimaryBg className="p-1 pr-3 mt-auto rounded-full w-fit">
+      <PrimaryBg className="p-1 pr-3 mt-auto rounded-full w-fit bg-opacity-100">
         <PrimaryShadow>
           <div className="flex items-center gap-3">
             <BgBackground className="p-1 rounded-full">

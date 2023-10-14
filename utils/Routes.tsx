@@ -7,6 +7,7 @@ import ProfileIcon from "./icons/profile";
 import ReceiptIcon from "./icons/reciept";
 import { ShoppingBagIcon } from "./icons/shopping-bag";
 import WalletIcon from "./icons/wallet";
+import { PrimaryBg } from "./primary-bg";
 
 const routes = [
   {
@@ -48,7 +49,7 @@ const routes = [
 
 export function Routes() {
   return (
-    <BgText className="mt-10">
+    <BgText className="mt-10 text-opacity-90">
       <div className="space-y-6">
         {routes.map((Route, index) => (
           <div
@@ -56,15 +57,15 @@ export function Routes() {
             className={`${Route.forLg ? "" : "md:block hidden"}`}
           >
             <Link href={Route.href}>
-              <div className="flex items-center p-2 hover:bg-gray-300/20 gap-3 rounded-md transition-all duration-300">
+              <PrimaryBg className="flex items-center p-2 gap-3 rounded-md transition-all duration-300 bg-opacity-0 hover:bg-opacity-10">
                 <Route.icon className="w-6 h-6 text-[#9796A1]" />
                 <div className="whitespace-nowrap">{Route.name}</div>
                 {Route.supportsNotification && (
-                  <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center">
+                  <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center bg-opacity-50">
                     <small>3</small>
                   </AccentBg>
                 )}
-              </div>
+              </PrimaryBg>
             </Link>
           </div>
         ))}

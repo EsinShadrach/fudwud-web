@@ -1,16 +1,12 @@
 "use client";
 import { useColorScheme } from "~/context/ColorProvider";
 
-export default function BgText({
-  children,
-  className,
-  opacity,
-}: ClassNameWithChildren) {
+export default function BgText({ children, className }: ClassNameWithChildren) {
   const { colorSchemeState } = useColorScheme();
   return (
     <span
       style={{
-        color: `rgb(${colorSchemeState.backgroundText}, ${opacity ?? "1"})`,
+        color: `rgb(${colorSchemeState.backgroundText} / var(--tw-text-opacity))`,
       }}
       className={className}
     >

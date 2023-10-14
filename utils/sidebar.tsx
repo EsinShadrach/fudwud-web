@@ -6,7 +6,7 @@ export default async function Sidebar() {
   const user = await currentUser();
   if (!user) return <></>;
   return (
-    <BgBackground>
+    <BgBackground className="bg-opacity-100">
       <SidebarMain
         username={user.username!}
         imageUrl={user.imageUrl!}

@@ -10,9 +10,7 @@ export default function BgBackground({
   return (
     <div
       style={{
-        backgroundColor: `rgb(${colorSchemeState.background}, ${
-          opacity ?? "1"
-        })`,
+        backgroundColor: `rgb(${colorSchemeState.background} / var(--tw-bg-opacity))`,
       }}
       className={className}
     >

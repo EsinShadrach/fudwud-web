@@ -12,7 +12,7 @@ export function PrimaryShadow({
     <div
       className={className}
       style={{
-        boxShadow: `0px 0px 400px 20px rbg(${colorSchemeState.primary}, ${opc})`,
+        boxShadow: `0px 0px 400px 20px rbg(${colorSchemeState.primary})`,
       }}
     >
       {children}
