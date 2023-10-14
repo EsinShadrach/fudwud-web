@@ -38,10 +38,7 @@ export default function SearchPage({ params, searchParams }: Props) {
         onSubmit={handleSubmit}
         className="flex items-center w-full max-w-xl mx-auto gap-2"
       >
-        <PrimaryBorder
-          opacity="0.5"
-          className="flex items-center w-full max-w-xl pl-2 mx-auto border-2 rounded-lg"
-        >
+        <PrimaryBorder className="flex items-center w-full max-w-xl pl-2 mx-auto border-2 rounded-lg border-opacity-50">
           <div>
             <MagnifyingGlassIcon className="w-6 h-6" />
           </div>
@@ -54,7 +51,7 @@ export default function SearchPage({ params, searchParams }: Props) {
           />
         </PrimaryBorder>
         <Link href={path}>
-          <PrimaryBg className="p-1 rounded-full" opacity="0.05">
+          <PrimaryBg className="p-1 rounded-full transition-all duration-300 bg-opacity-0 hover:bg-opacity-5">
             <XMarkIcon className="w-6 h-6" />
           </PrimaryBg>
         </Link>

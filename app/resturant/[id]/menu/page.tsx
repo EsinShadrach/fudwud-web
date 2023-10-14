@@ -1,6 +1,8 @@
 import Image from "next/image";
 import largePizza from "~/public/large-pizza.png";
 import BgText from "~/utils/bg-text";
+import FilterButton from "../../filter-button";
+import { DropDownButton } from "./DropDownButton";
 //TODO: Render all the food items here
 // ! GET NUMBER OF ITEMS HERE
 // ! GET NAME OF RESTURANT HERE
@@ -24,11 +26,17 @@ export default function Menu({ params, searchParams }: BaseProps) {
           draggable={"false"}
         />
       </div>
-      <div className="-mt-12">
-        <div>
-          <small>
-            <BgText className="text-opacity-90">Sort by:</BgText>
-          </small>
+      <div className="pr-3 -mt-12">
+        <div className="flex items-center justify-between max-w-xl">
+          <div className="flex items-center text-sm gap-2">
+            <small>
+              <BgText className="text-opacity-90">Sort by:</BgText>
+            </small>
+            <DropDownButton />
+          </div>
+          <div>
+            <FilterButton table={searchParams.table} />
+          </div>
         </div>
       </div>
     </section>

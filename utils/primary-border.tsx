@@ -11,7 +11,7 @@ export default function PrimaryBorder({
     <div
       className={className}
       style={{
-        borderColor: `rgb(${colorSchemeState.primary}, var(--tw-border-opacity)`,
+        borderColor: `rgb(${colorSchemeState.primary} / var(--tw-border-opacity)`,
       }}
     >
       {children}
