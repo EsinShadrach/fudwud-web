@@ -27,6 +27,7 @@ interface FoodItem {
   image: string;
   categories: string[];
   customerFavorite: boolean;
+  featured: boolean;
   rating: string | number;
   ratingCount: number;
   price: number | string;

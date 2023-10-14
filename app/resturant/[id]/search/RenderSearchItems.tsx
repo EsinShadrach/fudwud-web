@@ -4,57 +4,39 @@ import LoadingSpinner from "~/utils/icons/loading";
 import { SearchCardItem } from "./SearchCardItem";
 import Image from "next/image";
 import BgText from "~/utils/bg-text";
+import { useMenu } from "~/context/use-menu";
 
 type WithSearch = string;
 
 function RenderSearchItems({ search }: { search: WithSearch }) {
-  const [items, setItems] = useState<FoodItem[] | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [filterBySearch, setFilterBySearch] = useState<FoodItem[] | null>(null);
-
-  useEffect(() => {
-    async function getFeaturedItem() {
-      setLoading(true);
-      try {
-        const response = await fetch("/api/featured/");
-        if (response.ok) {
-          const responseData: FoodItem[] = await response.json();
-          setItems(responseData);
-          const filteredItems = responseData.filter((item) =>
-            item.name.toLowerCase().includes(search.toLowerCase())
-          );
-          const sortedItems = filteredItems
-            .slice()
-            .sort((a, b) => a.name.localeCompare(b.name));
-          setFilterBySearch(sortedItems);
-        }
-      } catch (error) {
-        const errorM = error as Error;
-        console.error(errorM.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getFeaturedItem();
-  }, [search]);
-  if (loading)
+  const { loading, menu } = useMenu();
+  if (loading) {
     return (
       <div className="flex items-center justify-center w-full min-h-screen">
         <LoadingSpinner />
       </div>
     );
+  }
 
-  if (!items || !filterBySearch)
+  if (!menu) {
     return (
       <div className="flex items-center justify-center w-full min-h-screen">
         Failed to fetch items. Try reloading.
       </div>
     );
+  }
+
+  const filteredItems = menu.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
+  );
+  const sortedItems = filteredItems
+    .slice()
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <>
-      {filterBySearch.length !== 0 ? (
-        filterBySearch.map((item, index) => (
+      {sortedItems.length !== 0 ? (
+        sortedItems.map((item, index) => (
           <SearchCardItem key={index} {...item} />
         ))
       ) : (

@@ -1,36 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useMenu } from "~/context/use-menu";
 import BgText from "~/utils/bg-text";
 import { FeaturedItemCard } from "~/utils/featured-card";
 import LoadingSpinner from "~/utils/icons/loading";
 import PopularItemCard from "~/utils/popular-item-card";
 
 export default function RenderFeaturedItems() {
-  const [featuredItem, setFeaturedItem] = useState<FoodItem[] | null>(null);
-  const [popularItem, setPopularItem] = useState<FoodItem[] | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    async function getFeaturedItem() {
-      setLoading(true);
-      try {
-        const response = await fetch("/api/featured/");
-        if (response.ok) {
-          const responseData: FoodItem[] = await response.json();
-          setFeaturedItem(responseData);
-          const popular = responseData.filter((item) => item.customerFavorite);
-          setPopularItem(popular);
-        }
-      } catch (error) {
-        const errorM = error as Error;
-        console.error(errorM.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getFeaturedItem();
-  }, []);
-
+  const { featured, loading, menu, popular } = useMenu();
   if (loading)
     return (
       <div className="flex items-center justify-center w-full h-52">
@@ -38,12 +15,12 @@ export default function RenderFeaturedItems() {
       </div>
     );
 
-  if (!featuredItem) return <></>;
+  if (!featured) return <>Couldn&apos;t fetch Items, try reloading</>;
 
   return (
     <>
       <div className="flex p-10 px-0 pt-0 overflow-x-auto gap-6 scrollbar-none">
-        {featuredItem.map((item, index) => (
+        {featured.map((item, index) => (
           <FeaturedItemCard {...item} key={index} />
         ))}
       </div>
@@ -52,12 +29,12 @@ export default function RenderFeaturedItems() {
           Popular Items
         </BgText>
         <div className="flex flex-wrap mt-5 gap-6">
-          {popularItem ? (
-            popularItem.map((item, index) => (
+          {popular ? (
+            popular.map((item, index) => (
               <PopularItemCard key={index} {...item} />
             ))
           ) : (
-            <></>
+            <>Couldn&apos;t fetch Items, try reloading</>
           )}
         </div>
       </div>
