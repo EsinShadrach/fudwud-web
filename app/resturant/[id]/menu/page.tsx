@@ -26,7 +26,9 @@ export default function Menu({ params, searchParams }: BaseProps) {
       </div>
       <div className="-mt-12">
         <div>
-          <small><BgText className="text-opacity-90">Sort by:</BgText></small>
+          <small>
+            <BgText className="text-opacity-90">Sort by:</BgText>
+          </small>
         </div>
       </div>
     </section>
