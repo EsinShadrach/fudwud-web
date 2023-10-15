@@ -4,6 +4,9 @@ type Props = {
 };
 
 export default function FilterPage({ params, searchParams }: Props) {
-  console.log(params.id);
-  return <section>THIS IS FILTER PAGE FOR TABLE: {searchParams.table}</section>;
+  return (
+    <section className="container max-h-screen p-3 mx-auto overflow-auto">
+      Filter for table {searchParams.table} in resturant {params.id}
+    </section>
+  );
 }

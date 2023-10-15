@@ -24,13 +24,13 @@ export function SidebarMain({
   return (
     <aside
       ref={sidebarRef}
-      className={`fixed flex flex-col w-full h-screen max-w-xs p-3 py-4 overflow-auto border-r-2 border-gray-200 sm:relative bg-inherit transition-all duration-300 z-50 ${
-        opened ? "translate-x-0" : "sm:translate-x-0 -translate-x-full"
+      className={`fixed flex flex-col w-full h-screen max-w-xs p-3 py-4 overflow-auto border-r-2 border-gray-200 md:relative bg-inherit transition-all duration-300 z-50 ${
+        opened ? "translate-x-0" : "md:translate-x-0 -translate-x-full"
       }`}
     >
       <button
         onClick={handleClose}
-        className="block p-1 ml-auto rounded-full bg-gray-300/20 sm:hidden"
+        className="block p-1 ml-auto rounded-full bg-gray-300/20 md:hidden"
       >
         <XMarkIcon className="w-6 h-6" />
       </button>

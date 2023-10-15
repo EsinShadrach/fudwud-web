@@ -52,7 +52,7 @@ export default async function ResturantPage({ params, searchParams }: Props) {
       </div>
       <div className="flex items-center w-full max-w-lg my-10 gap-6">
         <SearchField table={searchParams.table} />
-        <FilterButton table={searchParams.table} />
+        <FilterButton />
       </div>
       <div className="flex items-center justify-between my-5 gap-3">
         <BgText className="text-lg font-semibold sm:text-xl text-opacity-90">
