@@ -30,5 +30,5 @@ interface FoodItem {
   featured: boolean;
   rating: string | number;
   ratingCount: number;
-  price: number | string;
+  price: number;
 }

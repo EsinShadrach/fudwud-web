@@ -21,7 +21,7 @@ export function useMenu() {
 export const MenuContext = createContext<MenuInterface | null>(null);
 
 export function MenuProvider({ children }: { children: React.ReactNode }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [itemCount, setItemCount] = useState(0);
   const [menu, setMenu] = useState<FoodItem[] | null>(null);
   const [featured, setFeatured] = useState<FoodItem[] | null>(null);
@@ -29,7 +29,6 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     async function getFeaturedItem() {
-      setLoading(true);
       try {
         const response = await fetch("/api/featured/");
         if (response.ok) {

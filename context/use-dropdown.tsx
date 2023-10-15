@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 
-type Options = "popular" | "featured" | "least priced" | "most priced";
+type Options = "all" | "popular" | "featured" | "least priced" | "most priced";
 
 interface DropDownInterface {
   option: Options;
@@ -20,8 +20,9 @@ export function useDropDownOptions() {
 export const DropDownContext = createContext<DropDownInterface | null>(null);
 
 export function DropDownProvider({ children }: { children: React.ReactNode }) {
-  const [option, setOption] = useState<Options>("popular");
+  const [option, setOption] = useState<Options>("all");
   const [optionsArray, setOptionsArray] = useState<Options[]>([
+    "all",
     "popular",
     "featured",
     "least priced",

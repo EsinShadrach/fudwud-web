@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronUpIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { useDropDownOptions } from "~/context/use-dropdown";
 import { PrimaryBg } from "~/utils/primary-bg";
@@ -17,17 +17,17 @@ export function DropDownButton() {
       onClick={handleToggle}
       className="overflow-hidden rounded-lg shadow-lg bg-inherit group"
     >
-      <PrimaryBg className="flex items-center px-3 py-1 rounded-t-lg gap-3 bg-opacity-0 hover:bg-opacity-10 transition-all duration-300">
+      <PrimaryBg className="flex items-center justify-between w-full px-3 py-1 rounded-t-lg gap-3 bg-opacity-0 hover:bg-opacity-10 transition-all duration-300">
         {option}
-        <ChevronUpIcon
+        <ChevronDownIcon
           className={`w-4 h-4 transition-all duration-300 ${
-            opened && "-rotate-180"
+            opened && "rotate-180"
           }`}
         />
       </PrimaryBg>
       <div
         className={`min-h-0 grid overflow-hidden transition-all ${
-          opened ? "grid-rows-[0fr]" : "grid-rows-[1fr]"
+          opened ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className={`min-h-0 flex flex-col`}>

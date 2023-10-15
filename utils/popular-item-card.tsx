@@ -15,6 +15,7 @@ export default function PopularItemCard({
   rating,
   ratingCount,
   price,
+  customerFavorite,
 }: FoodItem) {
   const { resturantID, table } = useTableData();
   const path = `/resturant/${resturantID}/menu/${id}/?table=${table}`;
@@ -27,11 +28,13 @@ export default function PopularItemCard({
               <BgBackground className="flex items-center justify-center p-1 text-xs font-semibold rounded-full bg-inherit w-fit bg-opacity-100">
                 $<BgText className="text-opacity-100">{price}</BgText>
               </BgBackground>
-              <div>
-                <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full bg-opacity-100">
-                  <HeartIcon className="w-5 h-5" />
-                </PrimaryBg>
-              </div>
+              {customerFavorite && (
+                <div>
+                  <PrimaryBg className="flex items-center justify-center p-1 text-white rounded-full bg-opacity-100">
+                    <HeartIcon className="w-5 h-5" />
+                  </PrimaryBg>
+                </div>
+              )}
             </div>
             <BgBackground className="flex items-center p-1 px-2 mt-auto rounded-full shadow-lg w-fit translate-y-1/2 bg-opacity-100">
               <BgText className="text-sm font-semibold text-opacity-100">
