@@ -7,6 +7,7 @@ interface MenuInterface {
   featured: FoodItem[] | null;
   popular: FoodItem[] | null;
   loading: boolean;
+  itemCount: number;
 }
 
 export function useMenu() {
@@ -20,8 +21,9 @@ export function useMenu() {
 export const MenuContext = createContext<MenuInterface | null>(null);
 
 export function MenuProvider({ children }: { children: React.ReactNode }) {
-  const [menu, setMenu] = useState<FoodItem[] | null>(null);
   const [loading, setLoading] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
+  const [menu, setMenu] = useState<FoodItem[] | null>(null);
   const [featured, setFeatured] = useState<FoodItem[] | null>(null);
   const [popular, setPopular] = useState<FoodItem[] | null>(null);
 
@@ -39,6 +41,7 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
           setMenu(responseData);
           setFeatured(featuredFilter);
           setPopular(popularItems);
+          setItemCount(responseData.length);
         }
       } catch (error) {
         const errorM = error as Error;
@@ -55,6 +58,7 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
     featured,
     popular,
     loading,
+    itemCount,
   };
   return (
     <MenuContext.Provider value={contextValue}>{children}</MenuContext.Provider>

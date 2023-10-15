@@ -6,7 +6,7 @@ type Options = "popular" | "featured" | "least priced" | "most priced";
 interface DropDownInterface {
   option: Options;
   handleOption: (selected: Options) => void;
-  optionsArray: string[];
+  optionsArray: Options[];
 }
 
 export function useDropDownOptions() {
@@ -21,11 +21,24 @@ export const DropDownContext = createContext<DropDownInterface | null>(null);
 
 export function DropDownProvider({ children }: { children: React.ReactNode }) {
   const [option, setOption] = useState<Options>("popular");
-  const optionsArray = ["popular", "featured", "least priced", "most priced"];
+  const [optionsArray, setOptionsArray] = useState<Options[]>([
+    "popular",
+    "featured",
+    "least priced",
+    "most priced",
+  ]);
 
   function handleOption(selected: Options) {
-    setOption(selected);
+    const selectedIndex = optionsArray.indexOf(selected);
+    if (selectedIndex !== -1) {
+      const updatedOptionsArray = [...optionsArray];
+      updatedOptionsArray.splice(selectedIndex, 1);
+      updatedOptionsArray.unshift(selected);
+      setOption(selected);
+      setOptionsArray(updatedOptionsArray);
+    }
   }
+
   const contextValue = {
     option,
     handleOption,
