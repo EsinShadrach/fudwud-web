@@ -42,6 +42,8 @@ export function SidebarMain({
           width={100}
           className="rounded-full"
           draggable={"false"}
+          priority
+          fetchPriority="high"
         />
       </Link>
       <div className="mt-4">

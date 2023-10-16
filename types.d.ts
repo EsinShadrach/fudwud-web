@@ -32,3 +32,13 @@ interface FoodItem {
   ratingCount: number;
   price: number;
 }
+
+type FilterItem = {
+  name: string;
+  selected: boolean;
+};
+
+type FilterCategory = {
+  name: string;
+  filter: FilterItem[];
+};
