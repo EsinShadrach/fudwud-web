@@ -20,7 +20,7 @@ export const FilterContext = createContext<FilterContextInterface | null>(null);
 
 export function FilterProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
-  const [filters, setFilter] = useState<FilterCategory[] | null>(null);
+  const [filters, setFilters] = useState<FilterCategory[] | null>(null);
 
   useEffect(() => {
     async function getFilters() {
@@ -28,7 +28,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
         const response = await fetch("/api/filter");
         if (response.ok) {
           const data: FilterCategory[] = await response.json();
-          setFilter(data);
+          setFilters(data);
         }
       } catch (error) {
         const errorM = error as Error;
@@ -42,7 +42,7 @@ export function FilterProvider({ children }: { children: React.ReactNode }) {
 
   function handleSelect(categoryIndex: number, itemIndex: number) {
     if (filters) {
-      setFilter((prevFilters) =>
+      setFilters((prevFilters) =>
         prevFilters!.map((category, index) =>
           index === categoryIndex
             ? {
