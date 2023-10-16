@@ -26,7 +26,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ResturantPage({ params, searchParams }: Props) {
+export default async function ResturantPage({ searchParams }: Props) {
   const user = await currentUser();
   if (!user) return <>Login</>;
   return (

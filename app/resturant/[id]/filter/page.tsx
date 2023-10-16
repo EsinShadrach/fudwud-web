@@ -1,6 +1,6 @@
 import BgText from "~/utils/bg-text";
 import { BackButton } from "../back-button";
-import {DoneButton} from "./DoneButton";
+import { DoneButton } from "./DoneButton";
 import { RenderFilters } from "./RenderFilters";
 
 type Props = {
@@ -22,5 +22,3 @@ export default function FilterPage({}: Props) {
     </section>
   );
 }
-
-

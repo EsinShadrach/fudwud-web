@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useTableData } from "~/context/use-table";
 import AccentBg from "./accent-bg";
 import BgText from "./bg-text";
 import { HeartIcon } from "./icons/heart-active";
@@ -33,7 +34,7 @@ const routes = [
   },
   {
     name: "Favourites",
-    href: "/favourites",
+    href: "/resturant/favourites",
     icon: HeartIcon,
     forLg: false,
     supportsNotification: true,
@@ -48,6 +49,8 @@ const routes = [
 ];
 
 export function Routes() {
+  const { resturantID, table } = useTableData();
+  const callBackPath = `/?redirect_url=/resturant/${resturantID}/?table=${table}`;
   return (
     <BgText className="mt-10 text-opacity-90">
       <div className="space-y-6">
@@ -56,7 +59,7 @@ export function Routes() {
             key={index}
             className={`${Route.forLg ? "" : "md:block hidden"}`}
           >
-            <Link href={Route.href}>
+            <Link href={`${Route.href}${callBackPath}`}>
               <PrimaryBg className="flex items-center p-2 gap-3 rounded-md transition-all duration-300 bg-opacity-0 hover:bg-opacity-10">
                 <Route.icon className="w-6 h-6 text-[#9796A1]" />
                 <div className="whitespace-nowrap">{Route.name}</div>

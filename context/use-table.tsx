@@ -10,7 +10,7 @@ interface TableInterface {
 export function useTableData() {
   const context = useContext(TableContext);
   if (!context) {
-    throw Error("Sidebar context not found!");
+    throw Error("Table context not found!");
   }
   return context;
 }

@@ -13,18 +13,19 @@ export default function BottomNav() {
   const { table, resturantID } = useTableData();
   const pathname = usePathname();
   const path = `/resturant/${resturantID}/?table=${table}`;
+  const callBackPath = `/?redirect_url=/resturant/${resturantID}/?table=${table}`;
 
   const routes = [
     { name: "Home", path: path, icon: HomeIcon, supportsNotification: false },
     {
       name: "Cart",
-      path: "/cart",
+      path: `/cart/${callBackPath}`,
       icon: ShoppingBagIcon,
       supportsNotification: true,
     },
     {
       name: "Favourites",
-      path: "/favourites",
+      path: `/resturant/favourites/${callBackPath}`,
       icon: HeartIcon,
       supportsNotification: true,
     },
