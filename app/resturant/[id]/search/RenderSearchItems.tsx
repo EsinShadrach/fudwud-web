@@ -1,10 +1,9 @@
-import notFound from "~/public/not-found.png";
-import { useState, useEffect } from "react";
-import LoadingSpinner from "~/utils/icons/loading";
-import { SearchCardItem } from "./SearchCardItem";
 import Image from "next/image";
-import BgText from "~/utils/bg-text";
 import { useMenu } from "~/context/use-menu";
+import notFound from "~/public/not-found.png";
+import BgText from "~/utils/bg-text";
+import LoadingSpinner from "~/utils/icons/loading";
+import { SearchCardItem m } from "./SearchCardItem";
 
 type WithSearch = string;
 
@@ -48,7 +47,7 @@ function RenderSearchItems({ search }: { search: WithSearch }) {
 
 export default RenderSearchItems;
 
-function EmptySearch({ search }: { search: WithSearch }) {
+export function EmptySearch({ search }: { search: WithSearch }) {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full pt-5 gap-3">
       <Image alt="Not Found" src={notFound} className="w-full max-w-md" />
