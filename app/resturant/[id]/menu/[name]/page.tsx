@@ -24,7 +24,7 @@ export default function DetailedPage({
   searchParams,
 }: OrderDetailPageType) {
   const { menu, loading } = useMenu();
-  if (loading) return <BackButton />;
+  if (loading) return <LoadingSpinner />;
 
   if (!menu) return <>Could not get menu</>;
   const paramName = Number(params.name);
