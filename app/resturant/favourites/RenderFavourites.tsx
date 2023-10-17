@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useFavourite } from "~/context/use-favourite";
+import Image from "next/image";
+import BgText from "~/utils/bg-text";
 import LoadingSpinner from "~/utils/icons/loading";
 import PopularItemCard from "~/utils/popular-item-card";
 import { PrimaryBg } from "~/utils/primary-bg";
-import burgerKing from "~/public/burger-king.png";
-import Image from "next/image";
-import BgText from "~/utils/bg-text";
+
 export function RenderFavourites() {
   const [isOrders, setIsOrders] = useState(true);
   return (

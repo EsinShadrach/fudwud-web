@@ -24,6 +24,7 @@ export default function Menu({ params, searchParams }: BaseProps) {
         <Image
           alt="A pizza"
           src={largePizza}
+          placeholder="blur"
           className="w-full max-w-sm ml-auto"
           draggable={"false"}
         />

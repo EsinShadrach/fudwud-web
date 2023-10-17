@@ -13,7 +13,7 @@ import { PrimaryBg } from "./primary-bg";
 const routes = [
   {
     name: "My Orders",
-    href: "/orders",
+    href: "/resturant/orders",
     icon: ReceiptIcon,
     forLg: true,
     supportsNotification: false,
@@ -41,7 +41,7 @@ const routes = [
   },
   {
     name: "Cart",
-    href: "/cart",
+    href: "/resturant/cart",
     icon: ShoppingBagIcon,
     forLg: false,
     supportsNotification: true,
