@@ -19,7 +19,7 @@ export default function BottomNav() {
     { name: "Home", path: path, icon: HomeIcon, supportsNotification: false },
     {
       name: "Cart",
-      path: `/resturant/cart/${callBackPath}`,
+      path: `/resturant/orders/${callBackPath}`,
       icon: ShoppingBagIcon,
       supportsNotification: true,
     },

@@ -39,13 +39,6 @@ const routes = [
     forLg: false,
     supportsNotification: true,
   },
-  {
-    name: "Cart",
-    href: "/resturant/cart",
-    icon: ShoppingBagIcon,
-    forLg: false,
-    supportsNotification: true,
-  },
 ];
 
 export function Routes() {
