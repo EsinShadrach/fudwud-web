@@ -16,7 +16,7 @@ const routes = [
     href: "/resturant/orders",
     icon: ReceiptIcon,
     forLg: true,
-    supportsNotification: false,
+    supportsNotification: true,
   },
   {
     name: "My Profile",
