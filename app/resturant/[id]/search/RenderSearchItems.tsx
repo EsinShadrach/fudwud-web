@@ -3,7 +3,7 @@ import { useMenu } from "~/context/use-menu";
 import notFound from "~/public/not-found.png";
 import BgText from "~/utils/bg-text";
 import LoadingSpinner from "~/utils/icons/loading";
-import { SearchCardItem m } from "./SearchCardItem";
+import { SearchCardItem } from "./SearchCardItem";
 
 type WithSearch = string;
 
