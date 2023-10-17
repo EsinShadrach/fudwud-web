@@ -6,7 +6,6 @@ import BgText from "./bg-text";
 import { HeartIcon } from "./icons/heart-active";
 import ProfileIcon from "./icons/profile";
 import ReceiptIcon from "./icons/reciept";
-import { ShoppingBagIcon } from "./icons/shopping-bag";
 import WalletIcon from "./icons/wallet";
 import { PrimaryBg } from "./primary-bg";
 

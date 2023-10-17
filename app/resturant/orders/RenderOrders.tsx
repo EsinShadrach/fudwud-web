@@ -1,10 +1,9 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { useFavourite } from "~/context/use-favourite";
-import { PrimaryBg } from "~/utils/primary-bg";
-import burgerKing from "~/public/burger-king.png";
-import Image from "next/image";
 import BgText from "~/utils/bg-text";
+import { PrimaryBg } from "~/utils/primary-bg";
 import PrimaryBorder from "~/utils/primary-border";
 
 export function RenderOrders() {

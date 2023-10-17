@@ -27,9 +27,11 @@ export function TableProvider({ children }: { children: React.ReactNode }) {
   const resturantId = params.id as string;
 
   useEffect(() => {
-    setTable(tableNumber);
-    setResturantID(resturantId);
-  }, [resturantId, tableNumber]);
+    if (params.id && table != "") {
+      setTable(tableNumber);
+      setResturantID(resturantId);
+    }
+  }, [params.id, resturantId, table, tableNumber]);
 
   const contextValues = {
     table,
