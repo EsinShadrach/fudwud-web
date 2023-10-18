@@ -44,7 +44,7 @@ export default function DetailedPage({
     setOrderCount((prevValue) => (prevValue === 0 ? prevValue : prevValue - 1));
   }
 
-  const { menu, loading } = useMenu();
+  const { menu, loading, handleSelect } = useMenu();
   if (loading) return <LoadingSpinner />;
 
   if (!menu) return <>Could not get menu</>;
@@ -74,7 +74,7 @@ export default function DetailedPage({
             alt={selected.name}
             height={512}
             width={512}
-            className="w-auto h-auto rounded-lg"
+            className="object-cover w-auto h-auto rounded-lg"
           />
         </div>
         <div className="w-full max-w-lg py-3 mx-auto space-y-3">
@@ -144,7 +144,39 @@ export default function DetailedPage({
               Choice of Add On
             </BgText>
           </div>
-          <div className="mx-2">Render list of add on here</div>
+          <div className="flex flex-wrap mx-2 gap-3">
+            {selected.addOns.map((item, index) => (
+              <button
+                onClick={() => handleSelect(selected.id, item.name)}
+                key={index}
+                className="w-full rounded-md group md:w-fit"
+              >
+                <PrimaryBg className="flex items-center p-2 text-xs sm:text-sm bg-opacity-0 rounded-md gap-3 hover:bg-opacity-10 transition-all duration-300 group-focus:bg-opacity-10">
+                  <Image
+                    alt="add on"
+                    src={selected.image}
+                    width={42}
+                    height={42}
+                    draggable={"false"}
+                    className="object-cover rounded-md"
+                  />
+                  <BgText className="font-medium text-opacity-70">
+                    {item.name}
+                  </BgText>
+                  <BgText className="ml-auto text-xs text-opacity-70">
+                    +$2.30
+                  </BgText>
+                  <PrimaryBorder className="flex items-center justify-center w-5 h-5 border rounded-full">
+                    <PrimaryBg
+                      className={`w-3 h-3 rounded-full bg-opacity-100 transition-all duration-300 ${
+                        !item.selected && "opacity-0"
+                      }`}
+                    />
+                  </PrimaryBorder>
+                </PrimaryBg>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>

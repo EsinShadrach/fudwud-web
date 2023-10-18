@@ -8,6 +8,7 @@ interface MenuInterface {
   popular: FoodItem[] | null;
   loading: boolean;
   itemCount: number;
+  handleSelect: (foodItemId: number, addOnName: string) => void;
 }
 
 export function useMenu() {
@@ -52,12 +53,33 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
     getFeaturedItem();
   }, []);
 
+  function handleSelect(foodItemId: number, addOnName: string) {
+    if (menu) {
+      setMenu((prevMenu) =>
+        prevMenu!.map((item) => {
+          if (item.id === foodItemId) {
+            return {
+              ...item,
+              addOns: item.addOns.map((addOn) =>
+                addOn.name === addOnName
+                  ? { ...addOn, selected: !addOn.selected }
+                  : addOn
+              ),
+            };
+          }
+          return item;
+        })
+      );
+    }
+  }
+
   const contextValue: MenuInterface = {
     menu,
     featured,
     popular,
     loading,
     itemCount,
+    handleSelect,
   };
   return (
     <MenuContext.Provider value={contextValue}>{children}</MenuContext.Provider>
