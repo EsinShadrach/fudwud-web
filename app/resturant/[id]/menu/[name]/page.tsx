@@ -74,7 +74,7 @@ export default function DetailedPage({
             alt={selected.name}
             height={512}
             width={512}
-            className="rounded-lg"
+            className="w-auto h-auto rounded-lg"
           />
         </div>
         <div className="w-full max-w-lg py-3 mx-auto space-y-3">
