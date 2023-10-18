@@ -8,7 +8,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useMenu } from "~/context/use-menu";
-import notFound from "~/public/not-found.png";
 import BgText from "~/utils/bg-text";
 import { HeartIcon } from "~/utils/icons/heart-active";
 import LoadingSpinner from "~/utils/icons/loading";
@@ -16,6 +15,7 @@ import StarIcon from "~/utils/icons/star";
 import { PrimaryBg } from "~/utils/primary-bg";
 import PrimaryBorder from "~/utils/primary-border";
 import { BackButton } from "../../back-button";
+import { NotFound } from "./NotFound";
 
 // TODO: Add path to review
 // ! Even though the name of the catch all route is name I will not be using the name it'd be better if it was slug or something
@@ -144,27 +144,6 @@ export default function DetailedPage({
           </div>
           <div className="mx-2">Render list of add on here</div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function NotFound() {
-  return (
-    <section>
-      <div className="pl-3 w-fit">
-        <BackButton />
-      </div>
-      <div className="flex flex-col items-center justify-center w-full h-full pt-5 gap-3">
-        <Image
-          alt="Not Found"
-          src={notFound}
-          className="w-full max-w-md"
-          draggable={false}
-        />
-        <BgText className="text-2xl font-semibold text-opacity-75">
-          Page Not found - 404
-        </BgText>
       </div>
     </section>
   );
