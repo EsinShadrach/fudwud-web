@@ -31,6 +31,7 @@ interface FoodItem {
   rating: string | number;
   ratingCount: number;
   price: number;
+  addOns: { name: string; selected: boolean }[];
 }
 
 type FilterItem = {

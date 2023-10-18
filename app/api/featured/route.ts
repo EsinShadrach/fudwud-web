@@ -6,11 +6,17 @@ export async function GET() {
       prepareTime: "20 minutes",
       image: "https://picsum.photos/id/50/4608/3072",
       categories: ["Fast Food", "Burgers"],
-      customerFavorite: Math.random() < 0.5, // Random customer rating of 51% chance
+      customerFavorite: Math.random() < 0.5,
       featured: Math.random() < 0.7,
-      rating: +(Math.random() * 5).toFixed(1), // Random rating between 1 to 5 (with one decimal place)
-      ratingCount: Math.floor(Math.random() * 100), // Random count of people who have given it a rating
-      price: +(Math.random() * 20).toFixed(2), // Random price between 0 to 20 (with two decimal places)
+      rating: +(Math.random() * 5).toFixed(1),
+      ratingCount: Math.floor(Math.random() * 100),
+      price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Ketchup", selected: false },
+        { name: "Mustard", selected: false },
+        { name: "Lettuce", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 2,
@@ -23,6 +29,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Parmesan Cheese", selected: false },
+        { name: "Garlic Bread", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 3,
@@ -35,6 +46,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Extra Cheese", selected: false },
+        { name: "Peppers", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 4,
@@ -47,6 +63,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Soy Sauce", selected: false },
+        { name: "Wasabi", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 5,
@@ -59,6 +80,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Croutons", selected: false },
+        { name: "Dressing", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 6,
@@ -71,6 +97,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Ketchup", selected: false },
+        { name: "Honey Mustard", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 7,
@@ -83,6 +114,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Garlic Bread", selected: false },
+        { name: "Salad", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 8,
@@ -95,6 +131,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Mushrooms", selected: false },
+        { name: "Gravy", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 9,
@@ -107,6 +148,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Salsa", selected: false },
+        { name: "Guacamole", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 10,
@@ -119,6 +165,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Protein Powder", selected: false },
+        { name: "Honey", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 11,
@@ -131,6 +182,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Soy Sauce", selected: false },
+        { name: "Wasabi", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 12,
@@ -143,6 +199,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Balsamic Glaze", selected: false },
+        { name: "Croutons", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 13,
@@ -155,6 +216,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Balsamic Glaze", selected: false },
+        { name: "Fresh Basil", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 14,
@@ -167,6 +233,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Vanilla Ice Cream", selected: false },
+        { name: "Hot Fudge", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 15,
@@ -179,6 +250,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Extra Cheese", selected: false },
+        { name: "Basil Leaves", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 16,
@@ -191,6 +267,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Garlic Bread", selected: false },
+        { name: "Salad", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 17,
@@ -203,6 +284,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Salsa", selected: false },
+        { name: "Guacamole", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 18,
@@ -215,6 +301,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Chicken", selected: false },
+        { name: "Croutons", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 19,
@@ -227,6 +318,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Extra Cheese", selected: false },
+        { name: "Peppers", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 20,
@@ -239,6 +335,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Sour Cream", selected: false },
+        { name: "Guacamole", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 21,
@@ -251,6 +352,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Naan Bread", selected: false },
+        { name: "Rice", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 22,
@@ -263,6 +369,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Garlic Bread", selected: false },
+        { name: "Salad", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 23,
@@ -275,6 +386,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Tomato Soup", selected: false },
+        { name: "Bacon", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 24,
@@ -287,6 +403,11 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Tofu", selected: false },
+        { name: "Green Onions", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 25,
@@ -299,66 +420,96 @@ export async function GET() {
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Maple Syrup", selected: false },
+        { name: "Whipped Cream", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 26,
-      name: "Fried Rice",
-      prepareTime: "25 minutes",
-      image: "https://picsum.photos/id/75/1999/2998",
-      categories: ["Chinese", "Rice"],
+      name: "Pho",
+      prepareTime: "35 minutes",
+      image: "https://picsum.photos/id/75/5616/3744",
+      categories: ["Vietnamese", "Soup"],
       customerFavorite: Math.random() < 0.5,
       featured: Math.random() < 0.7,
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Bean Sprouts", selected: false },
+        { name: "Lime Wedges", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 27,
-      name: "Sushi Roll",
-      prepareTime: "20 minutes",
-      image: "https://picsum.photos/id/76/4912/3264",
-      categories: ["Japanese", "Sushi"],
+      name: "BBQ Ribs",
+      prepareTime: "45 minutes",
+      image: "https://picsum.photos/id/76/7360/4912",
+      categories: ["American", "BBQ"],
       customerFavorite: Math.random() < 0.5,
       featured: Math.random() < 0.7,
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Cornbread", selected: false },
+        { name: "Cole Slaw", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 28,
-      name: "Hamburger",
-      prepareTime: "20 minutes",
-      image: "https://picsum.photos/id/77/1631/1102",
-      categories: ["Fast Food", "Burgers"],
+      name: "Cobb Salad",
+      prepareTime: "15 minutes",
+      image: "https://picsum.photos/id/77/5472/3648",
+      categories: ["Salads", "American"],
       customerFavorite: Math.random() < 0.5,
       featured: Math.random() < 0.7,
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Chicken", selected: false },
+        { name: "Bacon Bits", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
     {
       id: 29,
-      name: "Veggie Pizza",
-      prepareTime: "30 minutes",
-      image: "https://picsum.photos/id/78/1584/2376",
-      categories: ["Vegetarian", "Pizza"],
-      customerFavorite: Math.random() < 0.5,
-      featured: Math.random() < 0.7,
-      rating: +(Math.random() * 5).toFixed(1),
-      ratingCount: Math.floor(Math.random() * 100),
-      price: +(Math.random() * 20).toFixed(2),
-    },
-    {
-      id: 30,
       name: "Tiramisu",
-      prepareTime: "15 minutes",
-      image: "https://picsum.photos/id/79/2000/3011",
+      prepareTime: "20 minutes",
+      image: "https://picsum.photos/id/78/5184/3456",
       categories: ["Desserts", "Italian"],
       customerFavorite: Math.random() < 0.5,
       featured: Math.random() < 0.7,
       rating: +(Math.random() * 5).toFixed(1),
       ratingCount: Math.floor(Math.random() * 100),
       price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Whipped Cream", selected: false },
+        { name: "Chocolate Shavings", selected: false },
+        // Add more add-ons here as needed
+      ],
+    },
+    {
+      id: 30,
+      name: "Fish and Chips",
+      prepareTime: "30 minutes",
+      image: "https://picsum.photos/id/79/5472/3648",
+      categories: ["Seafood", "British"],
+      customerFavorite: Math.random() < 0.5,
+      featured: Math.random() < 0.7,
+      rating: +(Math.random() * 5).toFixed(1),
+      ratingCount: Math.floor(Math.random() * 100),
+      price: +(Math.random() * 20).toFixed(2),
+      addOns: [
+        { name: "Malt Vinegar", selected: false },
+        { name: "Tartar Sauce", selected: false },
+        // Add more add-ons here as needed
+      ],
     },
   ];
 
