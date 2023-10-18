@@ -68,6 +68,8 @@ export default function DetailedPage({
             )}
           </div>
           <Image
+            priority
+            fetchPriority="high"
             src={selected.image}
             alt={selected.name}
             height={512}
