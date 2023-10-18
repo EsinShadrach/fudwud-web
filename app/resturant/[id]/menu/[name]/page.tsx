@@ -19,6 +19,7 @@ import { BackButton } from "../../back-button";
 
 // TODO: Add path to review
 // ! Even though the name of the catch all route is name I will not be using the name it'd be better if it was slug or something
+// ! use a max or a min width for the choice of add on
 type OrderDetailPageType = {
   params: {
     id: string;
@@ -136,6 +137,12 @@ export default function DetailedPage({
           <div className="mx-2 italic">
             <small>Time to prepare: {selected.prepareTime}</small>
           </div>
+          <div className="mx-2">
+            <BgText className="text-base italic font-semibold sm:text-lg text-opacity-80">
+              Choice of Add On
+            </BgText>
+          </div>
+          <div className="mx-2">Render list of add on here</div>
         </div>
       </div>
     </section>
