@@ -15,6 +15,8 @@ import StarIcon from "~/utils/icons/star";
 import { PrimaryBg } from "~/utils/primary-bg";
 import PrimaryBorder from "~/utils/primary-border";
 import { BackButton } from "../../back-button";
+import { AddOnButton } from "./AddOnButton";
+import { AutoResizableTextArea } from "./AutoResizableTextArea";
 import { NotFound } from "./NotFound";
 // TODO: Check if text area has the option to be disabled and use the pencil button to change it's state..?
 // TODO: Add path to review
@@ -38,33 +40,7 @@ export default function DetailedPage({
   const [edit, setEdit] = useState(true);
   const toEditRef = useRef<HTMLTextAreaElement>(null);
   const content = `Brown the beef better. Lean ground beef – I like to use 85% lean angus. Garlic – use fresh chopped. Spices – chili powder, cumin, onion powder. Nutrient values include protein and cabonhydrates`;
-  const [textAreaValue, setTextAreaValue] = useState(content);
-  const textareaRefs = useRef<HTMLTextAreaElement[]>([]);
-  useEffect(() => {
-    const textareas = textareaRefs.current;
 
-    textareas.forEach((textarea) => {
-      textarea.style.height = "auto"; // Reset height initially
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    });
-
-    textareas.forEach((textarea) => {
-      textarea.addEventListener("input", handleInput);
-    });
-
-    return () => {
-      // Clean up event listeners
-      textareas.forEach((textarea) => {
-        textarea.removeEventListener("input", handleInput);
-      });
-    };
-  }, []);
-
-  function handleInput(event: Event) {
-    const textArea = event.currentTarget as HTMLTextAreaElement;
-    textArea.style.height = "auto";
-    textArea.style.height = `${textArea.scrollHeight}px`;
-  }
   function toggleEdit() {
     setEdit((prev) => !prev);
     if (!edit) {
@@ -89,7 +65,7 @@ export default function DetailedPage({
   const selected = menu.find((item) => item.id === paramName);
   if (!selected) return <NotFound />;
   return (
-    <section className="container max-h-screen p-3 pb-20 mx-auto overflow-auto">
+    <section className="container max-h-screen p-3 pb-12 mx-auto overflow-auto">
       <div className="flex flex-col items-center md:flex-row gap-3">
         <div className="relative mx-auto md:mx-0 w-fit">
           <div className="absolute inset-x-0 flex items-center justify-between">
@@ -175,19 +151,9 @@ export default function DetailedPage({
                     edit ? "border-opacity-0" : "border-opacity-100"
                   }`}
                 >
-                  <textarea
-                    ref={(textarea) => {
-                      if (
-                        textarea &&
-                        !textareaRefs.current.includes(textarea)
-                      ) {
-                        textareaRefs.current.push(textarea);
-                      }
-                    }}
+                  <AutoResizableTextArea
+                    textContent={content}
                     disabled={edit}
-                    className="w-full h-auto px-2 overflow-y-hidden resize-none focus:outline-none disabled:bg-transparent"
-                    onChange={(e) => setTextAreaValue(e.target.value)}
-                    value={textAreaValue}
                   />
                 </PrimaryBorder>
               </BgText>
@@ -198,8 +164,8 @@ export default function DetailedPage({
           </div>
         </div>
       </div>
-      <div className="space-y-2">
-        <div className="mx-2 mt-5">
+      <div className="mt-5 space-y-3">
+        <div className="mx-2">
           <BgText className="text-base italic font-semibold sm:text-lg text-opacity-80">
             Choice of Add On
           </BgText>
@@ -211,33 +177,7 @@ export default function DetailedPage({
               key={index}
               className="w-full max-w-xs rounded-md group"
             >
-              <PrimaryBg
-                className={`flex items-center p-2 text-xs sm:text-sm  rounded-md gap-3 hover:bg-opacity-10 transition-all duration-300 group-focus:bg-opacity-10 ${
-                  item.selected ? "bg-opacity-10" : "bg-opacity-0"
-                }`}
-              >
-                <Image
-                  alt="add on"
-                  src={selected.image}
-                  width={42}
-                  height={42}
-                  draggable={"false"}
-                  className="object-cover w-auto h-auto rounded-md"
-                />
-                <BgText className="font-medium text-opacity-70">
-                  {item.name}
-                </BgText>
-                <BgText className="ml-auto text-xs text-opacity-70">
-                  +$2.30
-                </BgText>
-                <PrimaryBorder className="flex items-center justify-center w-5 h-5 border rounded-full">
-                  <PrimaryBg
-                    className={`w-3 h-3 rounded-full bg-opacity-100 transition-all duration-300 ${
-                      !item.selected && "opacity-0"
-                    }`}
-                  />
-                </PrimaryBorder>
-              </PrimaryBg>
+              <AddOnButton {...item} price="+$2.30" image={selected.image} />
             </button>
           ))}
         </div>
