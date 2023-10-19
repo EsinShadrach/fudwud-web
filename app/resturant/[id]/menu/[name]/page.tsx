@@ -16,6 +16,7 @@ import { PrimaryBg } from "~/utils/primary-bg";
 import PrimaryBorder from "~/utils/primary-border";
 import { BackButton } from "../../back-button";
 import { AddOnButton } from "./AddOnButton";
+import { AddToCartButton } from "./AddToCartButton.1";
 import { AutoResizableTextArea } from "./AutoResizableTextArea";
 import { NotFound } from "./NotFound";
 // TODO: Check if text area has the option to be disabled and use the pencil button to change it's state..?
@@ -65,7 +66,7 @@ export default function DetailedPage({
   const selected = menu.find((item) => item.id === paramName);
   if (!selected) return <NotFound />;
   return (
-    <section className="container max-h-screen p-3 pb-12 mx-auto overflow-auto">
+    <section className="container max-h-screen p-3 pb-16 mx-auto overflow-auto">
       <div className="flex flex-col items-center md:flex-row gap-3">
         <div className="relative mx-auto md:mx-0 w-fit">
           <div className="absolute inset-x-0 flex items-center justify-between">
@@ -162,6 +163,9 @@ export default function DetailedPage({
           <div className="mx-2 italic">
             <small>Time to prepare: {selected.prepareTime}</small>
           </div>
+          <div className="hidden md:block">
+            <AddToCartButton />
+          </div>
         </div>
       </div>
       <div className="mt-5 space-y-3">
@@ -181,6 +185,9 @@ export default function DetailedPage({
             </button>
           ))}
         </div>
+      </div>
+      <div className="block mx-auto mt-5 md:hidden w-fit">
+        <AddToCartButton />
       </div>
     </section>
   );
