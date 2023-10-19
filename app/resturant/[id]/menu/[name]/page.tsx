@@ -41,6 +41,10 @@ export default function DetailedPage({
   const [edit, setEdit] = useState(true);
   const toEditRef = useRef<HTMLTextAreaElement>(null);
   const content = `Brown the beef better. Lean ground beef – I like to use 85% lean angus. Garlic – use fresh chopped. Spices – chili powder, cumin, onion powder. Nutrient values include protein and cabonhydrates`;
+  const [text, setText] = useState(content);
+  function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    setText(event.target.value);
+  }
 
   function toggleEdit() {
     setEdit((prev) => !prev);
@@ -156,8 +160,9 @@ export default function DetailedPage({
                   }`}
                 >
                   <AutoResizableTextArea
-                    textContent={content}
                     disabled={edit}
+                    onChange={handleChange}
+                    value={text}
                   />
                 </PrimaryBorder>
               </BgText>

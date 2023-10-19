@@ -1,9 +1,10 @@
 import { faker } from "@faker-js/faker";
+
+const data: Review[] = [];
 export async function GET() {
   function generateReview(): Review[] {
-    const data: Review[] = [];
-
     for (let i = 0; i < 20; i++) {
+      const randomId = faker.string.uuid();
       const randomName = faker.person.fullName();
       const randomRating = +(Math.random() * 5).toFixed(1);
       const randomDate = faker.date.past({
@@ -13,6 +14,7 @@ export async function GET() {
       const randomPhoto = faker.image.avatar();
 
       const item: Review = {
+        id: randomId,
         name: randomName,
         rating: randomRating,
         date: randomDate,

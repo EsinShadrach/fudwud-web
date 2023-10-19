@@ -27,8 +27,8 @@ export function ReviewCard({ date, name, photo, rating, review }: Review) {
             <div>{convertISOToReadableDate(date)}</div>
           </div>
           <button className="flex flex-col items-center justify-center w-8 h-8 ml-auto rounded-full gap-2 transition-all duration-300 hover:bg-slate-400/10 active:scale-95">
-            <div className="w-2 h-2 bg-slate-300 rounded-md" />
-            <div className="w-2 h-2 bg-slate-300 rounded-md" />
+            <div className="w-1.5 h-1.5 bg-slate-300 rounded-md" />
+            <div className="w-1.5 h-1.5 bg-slate-300 rounded-md" />
           </button>
         </div>
         <div className="text-sm text-opacity-80">{review}</div>

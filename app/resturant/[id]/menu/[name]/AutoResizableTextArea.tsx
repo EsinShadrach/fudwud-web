@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 interface AutoResizableTextAreaProps {
   placeholder?: string;
-  textContent?: string;
   disabled?: boolean;
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export function AutoResizableTextArea({
   placeholder,
-  textContent,
   disabled,
+  onChange,
+  value,
 }: AutoResizableTextAreaProps) {
-  const [text, setText] = useState<string>(textContent ?? "");
   const height = 36;
 
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -21,12 +22,7 @@ export function AutoResizableTextArea({
       textAreaRef.current.style.height = "auto";
       textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
     }
-  }, [text]);
-
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-  };
-
+  }, [value]);
   return (
     <textarea
       className="w-full px-2 overflow-y-hidden resize-none focus:outline-none disabled:bg-transparent"
@@ -35,8 +31,8 @@ export function AutoResizableTextArea({
       ref={textAreaRef}
       rows={1}
       style={{ height: `${height}px` }}
-      value={text}
-      onChange={handleChange}
+      value={value}
+      onChange={onChange}
     />
   );
 }

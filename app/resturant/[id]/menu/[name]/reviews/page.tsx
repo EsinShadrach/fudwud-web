@@ -1,11 +1,10 @@
 import { currentUser } from "@clerk/nextjs/server";
-import { PencilIcon } from "@heroicons/react/24/solid";
 import BgBackground from "~/utils/bg-bg";
 import BgText from "~/utils/bg-text";
-import { PrimaryBg } from "~/utils/primary-bg";
 import UserImageButton from "~/utils/user-img-button";
 import { BackButton } from "../../../back-button";
 import { RenderReviews } from "./RenderReviews";
+import { WriteReviewButton } from "./WriteReviewButton";
 
 type ReviewPageProps = {
   params: {
@@ -24,18 +23,14 @@ export default async function ReviewPage({
 }: ReviewPageProps) {
   const user = await currentUser();
   if (!user) return <></>;
+  const redirect_url = searchParams.redirect_url;
   return (
     <section className="container relative max-h-screen p-3 pb-16 mx-auto overflow-auto">
       <BgBackground className="fixed text-sm sm:bottom-6 sm:right-6 rounded-md bg-opacity-100 bottom-16 right-6">
-        <button className="active:scale-95 group transition-all duration-300 will-change-transform">
-          <PrimaryBg className="flex items-center p-2 rounded-md hover:bg-opacity-20 gap-3 bg-opacity-10 transition-all duration-300 group-focus:bg-opacity-20">
-            <PencilIcon className="w-6 h-6" />
-            <div className="hidden sm:block">Write a review</div>
-          </PrimaryBg>
-        </button>
+        <WriteReviewButton />
       </BgBackground>
       <div className="flex items-center justify-between">
-        <BackButton />
+        <BackButton link={redirect_url ?? null} />
         <BgText className="text-xl font-semibold sm:text-2xl text-opacity-80">
           Reviews
         </BgText>
