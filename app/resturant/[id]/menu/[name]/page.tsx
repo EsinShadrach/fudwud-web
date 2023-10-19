@@ -6,7 +6,8 @@ import {
 } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useRef, useState } from "react";
 import { useMenu } from "~/context/use-menu";
 import BgText from "~/utils/bg-text";
 import { HeartIcon } from "~/utils/icons/heart-active";
@@ -19,10 +20,8 @@ import { AddOnButton } from "./AddOnButton";
 import { AddToCartButton } from "./AddToCartButton.1";
 import { AutoResizableTextArea } from "./AutoResizableTextArea";
 import { NotFound } from "./NotFound";
-// TODO: Check if text area has the option to be disabled and use the pencil button to change it's state..?
 // TODO: Add path to review
 // ! Even though the name of the catch all route is name I will not be using the name it'd be better if it was slug or something
-// ! use a max or a min width for the choice of add on
 type OrderDetailPageType = {
   params: {
     id: string;
@@ -38,6 +37,7 @@ export default function DetailedPage({
   searchParams,
 }: OrderDetailPageType) {
   const [orderCount, setOrderCount] = useState(0);
+  const pathName = usePathname();
   const [edit, setEdit] = useState(true);
   const toEditRef = useRef<HTMLTextAreaElement>(null);
   const content = `Brown the beef better. Lean ground beef – I like to use 85% lean angus. Garlic – use fresh chopped. Spices – chili powder, cumin, onion powder. Nutrient values include protein and cabonhydrates`;
@@ -104,7 +104,10 @@ export default function DetailedPage({
               +({selected.ratingCount - 1})
             </BgText>
             <PrimaryBg className="p-1 px-2 rounded-full transition-all duration-300 bg-opacity-0 hover:bg-opacity-10">
-              <Link href={`/`} className="underline underline-offset-2">
+              <Link
+                href={`${pathName}/reviews/?redirect_url=${pathName}&table=${searchParams.table}`}
+                className="underline underline-offset-2"
+              >
                 See reviews
               </Link>
             </PrimaryBg>
