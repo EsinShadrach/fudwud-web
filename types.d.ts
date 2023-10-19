@@ -43,3 +43,11 @@ type FilterCategory = {
   name: string;
   filter: FilterItem[];
 };
+
+interface Review {
+  name: string;
+  rating: number;
+  date: string | Date;
+  review: string;
+  photo: string;
+}

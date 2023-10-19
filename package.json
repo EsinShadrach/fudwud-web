@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.25.3",
+    "@faker-js/faker": "^8.2.0",
     "@heroicons/react": "^2.0.18",
+    "@types/faker": "^6.6.9",
+    "faker": "^6.6.6",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
