@@ -1,4 +1,7 @@
+import generateFakeFood from "./example";
+
 export async function GET() {
+  console.log(generateFakeFood());
   const imageInfo: FoodItem[] = [
     {
       id: 1,

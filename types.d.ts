@@ -21,7 +21,7 @@ type ClassNameWithNoChildren = {
 };
 
 interface FoodItem {
-  id: number;
+  id: number | string;
   name: string;
   prepareTime: string;
   image: string;
@@ -51,4 +51,16 @@ interface Review {
   date: string | Date;
   review: string;
   photo: string;
+}
+
+interface Order {
+  orders: CreateOrder[] | null;
+  createOrder: (order: CreateOrder) => void;
+}
+
+interface CreateOrder {
+  id: string | number;
+  count: number;
+  instructions: string;
+  addOnName?: string[];
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SidebarStateProvider } from "~/context/sidebar-context";
 import { FavouriteProvider } from "~/context/use-favourite";
+import { OrderProvider } from "~/context/use-order";
 import { TableProvider } from "~/context/use-table";
 import BottomNav from "~/utils/bottom-nav";
 import Sidebar from "~/utils/sidebar";
@@ -18,11 +19,13 @@ export default function RootLayout({
     <SidebarStateProvider>
       <TableProvider>
         <FavouriteProvider>
-          <main className="flex max-h-screen">
-            <Sidebar />
-            {children}
-            <BottomNav />
-          </main>
+          <OrderProvider>
+            <main className="flex max-h-screen">
+              <Sidebar />
+              {children}
+              <BottomNav />
+            </main>
+          </OrderProvider>
         </FavouriteProvider>
       </TableProvider>
     </SidebarStateProvider>
