@@ -38,7 +38,6 @@ export default function DetailedPage({
 }: OrderDetailPageType) {
   const { menu, loading, handleSelect } = useMenu();
   const [orderCount, setOrderCount] = useState(0);
-  const [addOns, setAddOns] = useState<string[]>([]);
   const pathName = usePathname();
   const [edit, setEdit] = useState(true);
   const toEditRef = useRef<HTMLTextAreaElement>(null);
@@ -48,7 +47,6 @@ export default function DetailedPage({
     count: orderCount,
     id: params.id,
     instructions: text,
-    addOnName: addOns,
   });
 
   useEffect(() => {
@@ -56,19 +54,12 @@ export default function DetailedPage({
       count: orderCount,
       id: params.id,
       instructions: text,
-      addOnName: addOns,
     });
     console.log("Running use effect for order");
-  }, [addOns, orderCount, params.id, text]);
+  }, [orderCount, params.id, text]);
 
   function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     setText(event.target.value);
-  }
-  function addToAddOn(name: string) {
-    if (addOns.includes(name)) {
-      setAddOns((prev) => prev.filter((addon) => addon !== name));
-    }
-    setAddOns((prev) => [...prev, name]);
   }
   function toggleEdit() {
     setEdit((prev) => !prev);
@@ -208,10 +199,7 @@ export default function DetailedPage({
         <div className="flex flex-wrap mx-2 gap-3">
           {selected.addOns.map((item, index) => (
             <button
-              onClick={() => {
-                handleSelect(selected.id, item.name);
-                addToAddOn(item.name);
-              }}
+              onClick={() => handleSelect(selected.id, item.name)}
               key={index}
               className="w-full max-w-xs rounded-md group"
             >

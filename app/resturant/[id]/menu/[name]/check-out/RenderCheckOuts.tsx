@@ -1,8 +1,7 @@
-"use client";
-
-import { useOrder } from "~/context/use-order";
-
-export function RenderCheckOuts() {
-  const { orders } = useOrder();
-  return <div>apple {JSON.stringify(orders)}</div>;
+export function RenderCheckOuts({ id, count }: { id: string; count: string }) {
+  return (
+    <div>
+      apple Item Id = {id} <br /> Order Count = {count}
+    </div>
+  );
 }

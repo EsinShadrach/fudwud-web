@@ -11,7 +11,9 @@ type Props = {
   };
   searchParams: {
     redirect_url: string;
-    table: string;
+    table: string | undefined;
+    count: string;
+    id: string;
   };
 };
 export default async function CheckOut({ searchParams }: Props) {
@@ -29,7 +31,7 @@ export default async function CheckOut({ searchParams }: Props) {
         </BgText>
         <UserImageButton imageUrl={user.imageUrl} username={user.username!} />
       </div>
-      <RenderCheckOuts />
+      <RenderCheckOuts id={searchParams.id} count={searchParams.count} />
     </section>
   );
 }

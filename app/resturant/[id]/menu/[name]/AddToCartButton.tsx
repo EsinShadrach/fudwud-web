@@ -1,30 +1,28 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useOrder } from "~/context/use-order";
 import BgBackground from "~/utils/bg-bg";
 import { ShoppingBagIcon } from "~/utils/icons/shopping-bag";
 import { PrimaryBg } from "~/utils/primary-bg";
 import { PrimaryShadow } from "~/utils/primary-shadow";
 
-export function AddToCartButton({
-  count,
-  id,
-  instructions,
-  addOnName,
-}: CreateOrder) {
+export function AddToCartButton({ count, id, instructions }: CreateOrder) {
   const searchParams = useSearchParams();
+  const { createOrder } = useOrder();
   const table = searchParams.get("table");
   const pathName = usePathname();
   const router = useRouter();
-  const href = `${pathName}/check-out/?redirect_url=${pathName}&table=${table}`;
+  const href = `${pathName}/check-out/?redirect_url=${pathName}&table=${table}&count=${count}&id=${id}`;
   function redirectUrl() {
     const order = {
       id,
       count,
       instructions,
-      addOnName,
     };
-    console.log(order);
-    router.push(href);
+    if (count > 0) {
+      createOrder(order);
+      router.push(href);
+    }
   }
   return (
     <button

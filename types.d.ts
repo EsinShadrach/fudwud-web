@@ -62,5 +62,4 @@ interface CreateOrder {
   id: string | number;
   count: number;
   instructions: string;
-  addOnName?: string[];
 }
