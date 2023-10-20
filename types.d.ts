@@ -59,7 +59,7 @@ interface Order {
 }
 
 interface CreateOrder {
-  id: string | number;
+  id: string;
   count: number;
   instructions: string;
 }
