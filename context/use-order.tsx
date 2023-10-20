@@ -15,7 +15,6 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   const [orders, setOrders] = useState<CreateOrder[] | null>(null);
 
   function createOrder(order: CreateOrder) {
-    // ! So we don't want a person to be able to add more than one item
     setOrders((prev) => {
       if (prev) {
         return [...prev, order];
