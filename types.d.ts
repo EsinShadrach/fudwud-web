@@ -20,20 +20,6 @@ type ClassNameWithNoChildren = {
   className?: string;
 };
 
-interface FoodItem {
-  id: number | string;
-  name: string;
-  prepareTime: string;
-  image: string;
-  categories: string[];
-  customerFavorite: boolean;
-  featured: boolean;
-  rating: string | number;
-  ratingCount: number;
-  price: number;
-  addOns: { name: string; selected: boolean }[];
-}
-
 type FilterItem = {
   name: string;
   selected: boolean;
@@ -62,4 +48,23 @@ interface CreateOrder {
   id: string;
   count: number;
   instructions: string;
+  status: "pending" | "cancelled" | "completed";
+}
+
+interface FoodItem {
+  id: string;
+  name: string;
+  prepareTime: string;
+  image: string;
+  categories: string[];
+  customerFavorite: boolean;
+  featured: boolean;
+  rating: number;
+  ratingCount: number;
+  price: number;
+  addOns: {
+    name: string;
+    selected: boolean;
+    image: string;
+  }[];
 }

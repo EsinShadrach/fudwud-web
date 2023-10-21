@@ -20,8 +20,8 @@ export default function PopularItemCard({
   const { resturantID, table } = useTableData();
   const path = `/resturant/${resturantID}/menu/${id}/?table=${table}`;
   return (
-    <Link href={path}>
-      <div className="w-full max-w-xs overflow-hidden shadow-md rounded-2xl bg-inherit">
+    <Link href={path} className="w-full max-w-sm">
+      <div className="w-full max-w-sm overflow-hidden shadow-md rounded-2xl bg-inherit">
         <div className="relative">
           <div className="absolute inset-0 flex flex-col p-3 pb-0 bg-black/20 rounded-b-2xl">
             <div className="flex justify-between">
@@ -49,9 +49,9 @@ export default function PopularItemCard({
           <Image
             src={image}
             alt={name}
-            width={320}
+            width={448}
             height={176}
-            className="object-cover h-44 rounded-b-2xl"
+            className="object-cover w-[448px] h-[176px] max-w-md rounded-b-2xl"
           />
         </div>
         <div className="p-3 pt-8">
