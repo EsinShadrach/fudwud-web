@@ -6,7 +6,7 @@ import { BackButton } from "../../back-button";
 
 export function NotFound() {
   return (
-    <section>
+    <section className="w-full">
       <div className="pl-3 w-fit">
         <BackButton />
       </div>

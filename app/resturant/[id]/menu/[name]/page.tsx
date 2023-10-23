@@ -4,6 +4,7 @@ import {
   PencilSquareIcon,
   PlusIcon,
 } from "@heroicons/react/24/solid";
+import { get } from "http";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -36,31 +37,40 @@ export default function DetailedPage({
   params,
   searchParams,
 }: OrderDetailPageType) {
+  const [selected, setSelected] = useState<FoodItem | null>(null);
   const { menu, loading, handleSelect } = useMenu();
   const [orderCount, setOrderCount] = useState(0);
   const pathName = usePathname();
   const [edit, setEdit] = useState(true);
   const toEditRef = useRef<HTMLTextAreaElement>(null);
-  const content = `Brown the beef better. Lean ground beef – I like to use 85% lean angus. Garlic – use fresh chopped. Spices – chili powder, cumin, onion powder. Nutrient values include protein and cabonhydrates`;
-  const [text, setText] = useState(content);
+  const [text, setText] = useState("");
   const [order, setOrder] = useState<CreateOrder>({
     count: orderCount,
     id: params.id,
     instructions: text,
+    status: "pending",
   });
 
+  useEffect(() => {
+    console.log("Running use effect from setMenu use effect");
+    if (menu) {
+      const getSelectedById =
+        menu.find((item) => item.id === params.name) ?? null;
+      const gottenInsturction = getSelectedById?.instructions ?? "";
+      setText(gottenInsturction);
+      setSelected(getSelectedById);
+    }
+  }, [menu, params.name]);
   useEffect(() => {
     setOrder({
       count: orderCount,
       id: params.id,
       instructions: text,
+      status: "pending",
     });
     console.log("Running use effect for order");
   }, [orderCount, params.id, text]);
 
-  function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    setText(event.target.value);
-  }
   function toggleEdit() {
     setEdit((prev) => !prev);
     if (!edit) {
@@ -68,7 +78,9 @@ export default function DetailedPage({
       toEditRef.current?.focus();
     }
   }
-
+  function handleChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    setText(event.target.value);
+  }
   function increment() {
     setOrderCount((prevValue) => prevValue + 1);
   }
@@ -80,9 +92,8 @@ export default function DetailedPage({
   if (loading) return <LoadingSpinner />;
 
   if (!menu) return <>Could not get menu</>;
-  const paramName = Number(params.name);
-  const selected = menu.find((item) => item.id === paramName);
   if (!selected) return <NotFound />;
+
   return (
     <section className="container max-h-screen p-3 pb-16 mx-auto overflow-auto">
       <div className="flex flex-col items-center md:flex-row gap-3">

@@ -42,6 +42,7 @@ interface Review {
 interface Order {
   orders: CreateOrder[] | null;
   createOrder: (order: CreateOrder) => void;
+  loading: boolean;
 }
 
 interface CreateOrder {
@@ -62,6 +63,7 @@ interface FoodItem {
   rating: number;
   ratingCount: number;
   price: number;
+  instructions: string;
   addOns: {
     name: string;
     selected: boolean;

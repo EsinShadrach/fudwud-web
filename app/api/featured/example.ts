@@ -34,6 +34,7 @@ export default function generateFakeFood({
       rating: +faker.number.int({ min: 0, max: 5 }),
       ratingCount: +faker.number.int({ min: 0, max: 100 }),
       price: +faker.finance.amount(5, 20, 2),
+      instructions: faker.lorem.lines({ min: 10, max: 20 }),
       addOns: addOns,
     };
 

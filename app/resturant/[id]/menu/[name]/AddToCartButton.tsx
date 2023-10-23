@@ -6,7 +6,12 @@ import { ShoppingBagIcon } from "~/utils/icons/shopping-bag";
 import { PrimaryBg } from "~/utils/primary-bg";
 import { PrimaryShadow } from "~/utils/primary-shadow";
 
-export function AddToCartButton({ count, id, instructions }: CreateOrder) {
+export function AddToCartButton({
+  count,
+  id,
+  instructions,
+  status,
+}: CreateOrder) {
   const searchParams = useSearchParams();
   const { createOrder } = useOrder();
   const table = searchParams.get("table");
@@ -18,10 +23,13 @@ export function AddToCartButton({ count, id, instructions }: CreateOrder) {
       id,
       count,
       instructions,
+      status,
     };
+    console.log("Before if block");
     if (count > 0) {
       createOrder(order);
-      router.push(href);
+      console.log("Running function");
+      // router.push(href);
     }
   }
   return (
