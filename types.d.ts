@@ -43,6 +43,9 @@ interface Order {
   orders: CreateOrder[] | null;
   createOrder: (order: CreateOrder) => void;
   loading: boolean;
+  pendingCount: number;
+  pending: CreateOrder[] | null;
+  completed: CreateOrder[] | null;
 }
 
 interface CreateOrder {

@@ -9,6 +9,7 @@ interface MenuInterface {
   loading: boolean;
   itemCount: number;
   handleSelect: (foodItemId: number | string, addOnName: string) => void;
+  getById(id: string | number): FoodItem | null;
 }
 
 export function useMenu() {
@@ -72,7 +73,16 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
       );
     }
   }
-
+  function getById(id: string | number): FoodItem | null {
+    if (menu) {
+      const gottenItem = menu.find((item) => item.id === id);
+      if (gottenItem) {
+        return gottenItem;
+      }
+      return null;
+    }
+    return null;
+  }
   const contextValue: MenuInterface = {
     menu,
     featured,
@@ -80,6 +90,7 @@ export function MenuProvider({ children }: { children: React.ReactNode }) {
     loading,
     itemCount,
     handleSelect,
+    getById,
   };
   return (
     <MenuContext.Provider value={contextValue}>{children}</MenuContext.Provider>

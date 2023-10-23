@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useOrder } from "~/context/use-order";
 import { useTableData } from "~/context/use-table";
 import AccentBg from "./accent-bg";
 import BgText from "./bg-text";
@@ -36,11 +37,12 @@ const routes = [
     href: "/resturant/favourites",
     icon: HeartIcon,
     forLg: false,
-    supportsNotification: true,
+    supportsNotification: false,
   },
 ];
 
 export function Routes() {
+  const { pendingCount } = useOrder();
   const { resturantID, table } = useTableData();
   const callBackPath = `/?redirect_url=/resturant/${resturantID}/?table=${table}`;
   return (
@@ -49,15 +51,15 @@ export function Routes() {
         {routes.map((Route, index) => (
           <div
             key={index}
-            className={`${Route.forLg ? "" : "md:block hidden"}`}
+            className={`${Route.forLg ? "" : "sm:block hidden"}`}
           >
             <Link href={`${Route.href}${callBackPath}`}>
               <PrimaryBg className="flex items-center p-2 gap-3 rounded-md transition-all duration-300 bg-opacity-0 hover:bg-opacity-10">
                 <Route.icon className="w-6 h-6 text-[#9796A1]" />
                 <div className="whitespace-nowrap">{Route.name}</div>
-                {Route.supportsNotification && (
+                {Route.supportsNotification && pendingCount !== 0 && (
                   <AccentBg className="px-2 py-0.5 ml-auto rounded-md flex justify-center items-center bg-opacity-50">
-                    <small>3</small>
+                    <small>{pendingCount}</small>
                   </AccentBg>
                 )}
               </PrimaryBg>

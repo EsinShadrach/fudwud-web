@@ -12,6 +12,9 @@ export function useOrder() {
 
 const OrderContext = createContext<Order | null>(null);
 export function OrderProvider({ children }: { children: React.ReactNode }) {
+  const [pendingCount, setPendingCount] = useState(0);
+  const [pending, setPending] = useState<CreateOrder[] | null>(null);
+  const [completed, setCompleted] = useState<CreateOrder[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState<CreateOrder[] | null>(null);
 
@@ -22,7 +25,17 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
         if (response.ok) {
           const data = await response.json();
           const toCreateOrder = data as CreateOrder[];
+
           setOrders(toCreateOrder);
+          const getPending = toCreateOrder.filter(
+            (order) => order.status === "pending"
+          );
+          const getCompleted = toCreateOrder.filter(
+            (order) => order.status === "completed"
+          );
+          setCompleted(getCompleted);
+          setPending(getPending);
+          setPendingCount(getPending.length);
         } else {
           const errorResponse = await response.json();
           console.log(errorResponse);
@@ -46,7 +59,17 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        const converted = data as CreateOrder[];
+        setOrders(converted);
+        const getPending = converted.filter(
+          (order) => order.status === "pending"
+        );
+        const getCompleted = converted.filter(
+          (order) => order.status === "completed"
+        );
+        setCompleted(getCompleted);
+        setPending(getPending);
+        setPendingCount(getPending.length);
       } else {
         const data = await response.json();
         console.error(data);
@@ -59,8 +82,11 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
   }
 
   const contextValue: Order = {
+    pendingCount,
     loading,
+    pending,
     orders,
+    completed,
     createOrder,
   };
   return (

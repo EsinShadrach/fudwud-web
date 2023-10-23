@@ -1,10 +1,19 @@
 "use client";
+import sampleFood from "~/public/sample-food.png";
 import Image from "next/image";
 import { useState } from "react";
-import { useFavourite } from "~/context/use-favourite";
+import { useOrder } from "~/context/use-order";
 import BgText from "~/utils/bg-text";
 import { PrimaryBg } from "~/utils/primary-bg";
 import PrimaryBorder from "~/utils/primary-border";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  MinusSmallIcon,
+  PlusIcon,
+  PlusSmallIcon,
+} from "@heroicons/react/24/solid";
+import LoadingSpinner from "~/utils/icons/loading";
+import { useMenu } from "~/context/use-menu";
 
 export function RenderOrders() {
   const [isUpcoming, setIsUpcoming] = useState(true);
@@ -49,58 +58,68 @@ export function RenderOrders() {
 }
 
 function UpcomingOrHistory({ isUpcoming }: { isUpcoming: boolean }) {
-  const { resturants } = useFavourite();
+  const { pending, completed } = useOrder();
+  if (!pending) return <LoadingSpinner />;
   return (
-    <div className="flex flex-wrap gap-6">
-      {resturants.map((resturant, index) => (
-        <div
-          key={index}
-          className="w-full max-w-md p-3 border border-gray-100 shadow-lg rounded-md bg-inherit hover:shadow-xl duration-300 transition-all"
-        >
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg shadow-xl w-fit">
-              <Image
-                alt={resturant.name}
-                src={resturant.logo}
-                height={64}
-                width={64}
-                className="object-cover"
-              />
-            </div>
-            <div className="flex flex-col gap-1">
-              <small>#2939292</small>
-              <BgText className="font-semibold text-opacity-90">
-                {resturant.name}
-              </BgText>
-            </div>
-          </div>
-          <div className="mt-5">
-            <div className="flex items-center justify-between">
-              <BgText className="flex flex-col text-opacity-50 gap-0.5">
-                <small>Estimated Arrival</small>
-                <div className="font-semibold">
-                  25{" "}
-                  <sup>
-                    <small>mins</small>
-                  </sup>
-                </div>
-              </BgText>
-              <PrimaryBg className="p-1 text-sm bg-opacity-10 rounded-md">
-                $30
-              </PrimaryBg>
-            </div>
-            <div className="mx-6 mt-5">
-              <button className="w-full overflow-hidden rounded-full transition-all active:scale-95 duration-300">
-                <PrimaryBg className="transition-all duration-300 hover:bg-opacity-10">
-                  <PrimaryBorder className="border text-center rounded-full py-1.5">
-                    Cancel
-                  </PrimaryBorder>
-                </PrimaryBg>
-              </button>
-            </div>
-          </div>
-        </div>
+    <div className="pt-3 space-y-6">
+      {pending.map((order, index) => (
+        <OrderCard key={index} {...order} />
       ))}
     </div>
+  );
+}
+
+function OrderCard({ count, id, instructions, status }: CreateOrder) {
+  const { getById } = useMenu();
+  const order = getById(id);
+  console.log(order);
+  return (
+    <PrimaryBg className="flex w-full max-w-md mx-auto transition-all duration-300 rounded-md bg-opacity-0 hover:bg-opacity-10 gap-3">
+      <div className="w-32">
+        <Image
+          src={sampleFood}
+          alt="Sample food"
+          height={96}
+          width={96}
+          quality={100}
+          className="object-cover w-24 h-24 rounded-md"
+        />
+      </div>
+      <div className="flex flex-col justify-between w-full p-2">
+        <div className="flex items-center justify-between">
+          <BgText className="font-semibold sm:text-lg text-opacity-80">
+            Apples
+          </BgText>
+          <PrimaryBg className="rounded-full active:scale-95 transition-all duration-300 bg-opacity-0 hover:bg-opacity-20">
+            <button className="p-1 rounded-full">
+              <XMarkIcon className="w-4 h-4" />
+            </button>
+          </PrimaryBg>
+        </div>
+        <div>
+          <small>
+            <BgText className="font-medium text-opacity-40">
+              butter, apple
+            </BgText>
+          </small>
+        </div>
+        <div className="flex items-center justify-between">
+          <small className="font-medium">$24</small>
+          <div className="flex items-center gap-3">
+            <button className="rounded-full transition-all duration-300 active:scale-95">
+              <PrimaryBorder className="p-px border rounded-full w-fit">
+                <MinusSmallIcon className="w-4 h-4" />
+              </PrimaryBorder>
+            </button>
+            <BgText className="font-medium text-opacity-80">0</BgText>
+            <button className="rounded-full transition-all duration-300 active:scale-95">
+              <PrimaryBg className="p-0.5 rounded-full bg-opacity-100 w-fit">
+                <PlusSmallIcon className="w-4 h-4 text-white stroke-white" />
+              </PrimaryBg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </PrimaryBg>
   );
 }
