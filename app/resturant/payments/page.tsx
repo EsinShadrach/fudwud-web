@@ -1,7 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 import BgText from "~/utils/bg-text";
 import UserImageButton from "~/utils/user-img-button";
-import { BackButton } from "../[id]/back-button";
+import { BankCard } from "./BankCard";
 import { GoBackButton } from "./GoBackButton";
 
 type BaseProps = {
@@ -9,8 +9,7 @@ type BaseProps = {
   searchParams: { redirect_url?: string };
 };
 
-export default async function PaymentPage({ searchParams }: BaseProps) {
-  const redirect_url = searchParams.redirect_url ?? "/resturant";
+export default async function PaymentPage() {
   const user = await currentUser();
   if (!user) return <>Login</>;
   return (
@@ -20,10 +19,16 @@ export default async function PaymentPage({ searchParams }: BaseProps) {
           <GoBackButton />
         </div>
         <BgText className="text-xl font-semibold sm:text-2xl text-opacity-80">
-          Favourites
+          Payment Info
         </BgText>
         <UserImageButton imageUrl={user.imageUrl} username={user.username!} />
       </div>
+      <BankCard
+        cardNumber="0000000000000000"
+        isVisa={false}
+        cvv="123"
+        expiry="08/23"
+      />
     </section>
   );
 }

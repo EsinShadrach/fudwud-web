@@ -17,7 +17,7 @@ export function AddToCartButton({
   const table = searchParams.get("table");
   const pathName = usePathname();
   const router = useRouter();
-  const href = `${pathName}/check-out/?redirect_url=${pathName}&table=${table}&count=${count}&id=${id}`;
+  const href = `${pathName}/orders/?redirect_url=${pathName}&table=${table}&count=${count}&id=${id}`;
   function redirectUrl() {
     const order = {
       id,
@@ -29,7 +29,7 @@ export function AddToCartButton({
     if (count > 0) {
       createOrder(order);
       console.log("Running function");
-      // router.push(href);
+      router.push(href);
     }
   }
   return (
