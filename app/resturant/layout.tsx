@@ -1,3 +1,4 @@
+import { currentUser } from "@clerk/nextjs/server";
 import type { Metadata } from "next";
 import { SidebarStateProvider } from "~/context/sidebar-context";
 import { FavouriteProvider } from "~/context/use-favourite";
@@ -11,11 +12,12 @@ export const metadata: Metadata = {
   title: "Resturant",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const user = await currentUser();
   return (
     <SidebarStateProvider>
       <TableProvider>
@@ -23,7 +25,7 @@ export default function RootLayout({
           <FavouriteProvider>
             <OrderProvider>
               <main className="flex max-h-screen">
-                <Sidebar />
+                <Sidebar user={user} />
                 {children}
                 <BottomNav />
               </main>

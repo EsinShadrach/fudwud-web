@@ -1,9 +1,8 @@
-import { currentUser } from "@clerk/nextjs";
+import { User } from "@clerk/nextjs/server";
 import BgBackground from "./bg-bg";
 import { SidebarMain } from "./SidebarMain";
 
-export default async function Sidebar() {
-  const user = await currentUser();
+export default function Sidebar({ user }: { user: User | null }) {
   if (!user) return <></>;
   return (
     <BgBackground className="bg-opacity-100">
